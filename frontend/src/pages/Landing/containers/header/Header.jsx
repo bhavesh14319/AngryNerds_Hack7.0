@@ -6,27 +6,27 @@ import ai from '../../assets/ai.png'
 const Header = () => {
   return (
     <div className="gpt3__header section__padding " id="home">
-      
+
       <div className="gpt3__header-content">
-        <h1 className="gpt3__header-content__text gradient__text">
-          Let's Build Something Amazing with GPT-3 OpenAI
+        <h1 className="gpt3__header-content__text ">
+          Farm Easy is the one-stop solution for all your farming needs
         </h1>
         <p>
-          Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment. Party we years to order allow asked of.
+          The go-to website for renting farm tools and buying/selling farming products.
         </p>
         <div className="gpt3__header-content__input">
-          <input type="email" placeholder='Your Email Address'></input>
+          {/* <input type="email" placeholder='Your Email Address'></input> */}
           <button type="button">Get Started</button>
         </div>
 
-        <div className = "gpt3__header-content__people">
-          <img src = {people} alt = 'people'></img>
-          <p>1,600 people requested access a visit in last 24 hours</p>
+        <div className="gpt3__header-content__people">
+          <img src={people} alt='people'></img>
+          <p>More than 1000 farmers are linked with us</p>
         </div>
       </div>
 
       <div className="gpt3__header-image">
-        <img src = {ai} alt = 'ai image'></img>
+        <img src={ai} alt='ai image'></img>
       </div>
     </div>
   )

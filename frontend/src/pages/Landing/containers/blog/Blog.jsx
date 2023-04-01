@@ -7,35 +7,41 @@ const blogData = [
   {
     img: blog02,
     date : "26 Sep 2021", 
-    title : "GPT-3 and Open  AI is the future. Let us explore how it is?"
+    title : "7 Tips To Get The Best Wheat Produce",
+    link : "https://mahadhan.co.in/7-tips-get-best-wheat-produce/"
   },
   {
     img: blog03,
     date : "26 Sep 2021", 
-    title : "GPT-3 and Open  AI is the future. Let us explore how it is?"
+    title : "Potato Disease and Symptom",
+    link : "https://mahadhan.co.in/potato-diseases-symptoms/"
   },
   {
     img: blog04,
     date : "26 Sep 2021", 
-    title : "GPT-3 and Open  AI is the future. Let us explore how it is?"
+    title : "Cotton Farming – The Success Story",
+    link : "https://mahadhan.co.in/cotton-farming-success-story/"
   },
   {
     img: blog05,
     date : "26 Sep 2021", 
-    title : "GPT-3 and Open  AI is the future. Let us explore how it is?"
+    title : "Why is soil testing important for banana farming?",
+    link : "Why Is Soil Testing Important For Banana Farming?"
   },
 
 ];
 
+const arti_desc = "We understand that as a farmer, you want to ensure that your crops grow and yield a healthy harvest. One crucial aspect of achieving this goal is by properly applying fertilizers. However, it's easy to make mistakes when it comes to fertilization, which could lead to wasted resources, reduced yields, or even harm to the environment.";
+
 const Blog = () => {
   return (
-    <div className="gpt3__blog  section__margin" id = "blog">
+    <div className="gpt3__blog  section__padding" id = "blog">
       <div className="gpt3__blog-title gradient__text ">
-        <p>A lot is happening, We are blogging about it.</p>
+        <p>Read Exclusive Blogs on Farming </p>
       </div>
       <div className="gpt3__blog-article__container">
         <div className="gpt3__blog-article__container-1">
-          <Article imgSrc = {blog01} date = "26 Sep, 2021" title = "GPT-3 and Open  AI is the future. Let us explore how it is?"/>
+          <Article imgSrc = {blog01} desc = {arti_desc} date = "26 Sep, 2021" imgLink = {'https://mahadhan.co.in/7-tips-get-best-wheat-produce/'} title = "5 Mistakes Farmers Should Avoid While Applying Fertilisers"/>
         </div>
         <div className="gpt3__blog-article__container-2">
           {blogData.map((item, index) => (

@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 2rem 6rem;
+    background : #d8f5de;
 }
 
 .gpt3__navbar-links {

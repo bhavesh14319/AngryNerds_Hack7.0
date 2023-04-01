@@ -1,6 +1,7 @@
 import React from "react";
 import {Blog,Features,Footer,Header,Possibility,WhatGPT3} from "./containers";
-import { Article, Brand, CTA, Feature, Navbar } from "./components";
+import { Article, Brand, CTA, Feature } from "./components";
+import Navbar from '../../components/navbar/Navbar'
 import './Landing.css'
 import './index.css'
 
@@ -8,10 +9,9 @@ function Landing() {
   return (
     <div className="Landing">
       <div className="gradient__bg">
-        {/* <Navbar /> */}
+        <Navbar />
         <Header />
       </div>
-      <Brand />
       <WhatGPT3 />
       <Features />
       <Possibility />

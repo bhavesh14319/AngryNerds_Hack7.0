@@ -4,6 +4,7 @@
     gap : 4rem;
     align-items : flex-start;
     justify-content : space-between;
+    background : #d8f5de;
 }
 
 .gpt3__blog-title {

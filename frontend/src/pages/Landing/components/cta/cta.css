@@ -3,8 +3,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 3rem 2rem;
-    background: var(--gradient-bar);
-    border-radius: 10px;
+    background: #d8f5de ;
+    border-radius: 30px;
 }
 
 .gpt3__cta-info {
@@ -24,12 +24,13 @@
     font-weight: 800;
     font-size: 24px;
     line-height: 45px;
-    color : black;
+    color : #379237;
     font-family : var(--font-family);
+    margin-right : 2rem;
 }
 
 .gpt3__cta-getstart button{
-    background : black;
+    background : #0a410a;
     height : 60px;
     width : 190px;
     border-radius: 50px;

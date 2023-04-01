@@ -11,7 +11,7 @@
 }
 
 .gpt3__feature-container__feature-title {
-    color: white;
+    color: #379237 ;
     font-weight: 800;
     font-size: 10px;
     line-height: 24px;
@@ -22,7 +22,7 @@
 }
 
 .gpt3__feature-container__feature-text {
-    color: var(--color-text);
+    color: #77b73b ;
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;

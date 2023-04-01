@@ -18,15 +18,16 @@
     font-size : 62px;
     line-height : 75px;
     letter-spacing: -0.04em;
+    color : var(--color-text);
 }
 
 .gpt3__header-content p{
     width : 85%;
     font-family : var(--font-family);
     font-weight: normal;
-    font-size : 20px;
-    line-height : 27px;
-    color : var(--color-text);
+    font-size :30px;
+    line-height : 35px;
+    color : #54B435;
     margin-top : 1.5rem;
 }
 
@@ -39,18 +40,19 @@
 
 .gpt3__header-content__input input{
     flex: 3;
-    background : #052D56;
-    border : solid #052d56;
+    background : #379237;
+    border : solid #379237;
     color : var(--color-text);
     font-size : 20px;
     line-height: 27px;
     padding-left : 2rem;
     border-radius : 5px 0 0 5px;
+    color : #d8f5de;
 
 }
 
 ::placeholder {
-    color : var(--color-text);
+    color : #d8f5de;
     font-size : 20px;
 }
 
@@ -60,7 +62,8 @@
 
 .gpt3__header-content__input button {
     flex : 1;
-     background: #FF4820;
+     background: #0a410a;
+     /* color : #d8f5de; */
      color : white;
      border-radius : 0 5px 5px 0;
      border : none;
@@ -81,7 +84,7 @@
 
 .gpt3__header-content__people p{
     font-family : var(--font-family);
-    color : white;
+    color : #379237;
     font-size : 12px;
     margin-top : 0;
     line-height : 16px;

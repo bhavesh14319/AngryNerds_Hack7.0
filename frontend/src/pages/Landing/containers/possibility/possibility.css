@@ -3,6 +3,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background : #d8f5de;
+    padding : 1rem;
+    border-radius : 30px;
 }
 
 .gpt3__possibility-vrphoto {

@@ -6,14 +6,14 @@ const Features = () => {
   return (
     <div className="gpt3__features section__padding gradient__bg" id="features">
       <div className="gpt3__features-topic">
-        <h1 className="gradient__text">The Future is Now and You Just Need To Realize It. Step into Future Today & Make it Happen.</h1>
-        <p>Request Early Access to Get Started</p>
+        <h1 className="gradient__text">Farm Easy Provides Oustanding Services To Buyers and Sellers !!</h1>
+        <p></p>
       </div>
       <div className="gpt3__features-feature">
-        <Feature title={"Improving end distrusts instantly"} text={"From they fine john he give of rich he. They age and draw mrs like. Improving end distrusts may instantly was household applauded."} />
-        <Feature title={"Become the tended active"} text={"Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to."} />
-        <Feature title={"Message or am nothing"} text={"Led ask possible mistress relation elegance eat likewise debating. By message or am nothing amongst chiefly address."} />
-        <Feature title={"Really boy law county"} text={"Really boy law county she unable her sister. Feet you off its like like six. Among sex are leave law built now. In built table in an rapid blush."} />
+        <Feature title={"Buying and Renting Farming Equipments"} text={"FarmEase makes buying and renting high-quality farm equipment easy and affordable for farmers of all sizes and experience levels."} />
+        <Feature title={"Multi Language Support"} text={"FarmEase offers its user-friendly website in both Hindi and English, ensuring that farmers from all regions have access to our services."} />
+        <Feature title={"Browse and Filter"} text={"FarmEase allows farmers to easily browse through our extensive inventory of farming products and tools with customizable filters, making it easy to find exactly what you need. "} />
+        <Feature title={"Chat with experts"} text={"Whether you have questions about our rental services, need help with an order, or have concerns about a product, our friendly and knowledgeable support staff is always available to assist you."} />
       </div>
     </div>
   )
