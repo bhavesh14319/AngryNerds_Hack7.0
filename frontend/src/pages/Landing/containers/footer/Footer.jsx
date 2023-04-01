@@ -21,11 +21,11 @@ const footerData = [
 const Footer = () => {
   return (
     <div className="gpt3__footer" id = "footer">
-      <div className="gpt3__footer-title gradient__text">
-        <p>Do you want to step in to the future before others</p>
+      <div className="gpt3__footer-title">
+        <p>Hurry Up! and Take Your Farming To Next Level !</p>
       </div>
       <div className="gpt3__footer-early">
-        <button type="button">Request Early Access</button>
+        <button type="button">Get Started</button>
       </div>
       <div className="gpt3__footer-about">
         <div className="gpt3__footer-about__topic">
