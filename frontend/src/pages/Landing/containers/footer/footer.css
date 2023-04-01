@@ -1,0 +1,112 @@
+.gpt3__footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: var(--color-footer);
+    padding: 6rem 10rem 2rem;
+}
+
+.gpt3__footer-title {
+    max-width: 900px;
+    margin-bottom: 4rem;
+}
+
+.gpt3__footer-title p {
+    font-family: var(--font-family);
+    font-size: 62px;
+    line-height: 75px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.gpt3__footer-early {
+    margin-bottom: 10rem;
+}
+
+.gpt3__footer-early button {
+    cursor: pointer;
+    background: var(--color-footer);
+    border: solid white 1px;
+    padding: 1rem;
+    color: white;
+    font-size: 18px;
+    line-height: 21px;
+    font-family: var(--font-family);
+}
+
+.gpt3__footer-about__topic {
+    display: flex;
+    flex-direction: column;
+    max-width: 168px;
+    gap: 2rem;
+    margin-right: 20%;
+}
+
+.gpt3__footer-about__topic-name {
+    width: 118px;
+    height: 30px;
+}
+
+.gpt3__footer-about__topic-desc {
+    font-size: 12px;
+    line-height: 16px;
+    color: white;
+    font-family: var(--font-family);
+}
+
+.gpt3__footer-about {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.gpt3__footer-about__container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.gpt3__footer-about__copyright p {
+    color: white;
+    font-family: var(--font-family);
+    font-size: 12px;
+    line-height: 14px;
+}
+
+@media screen and (max-width : 1050px) {
+    .gpt3__footer-about {
+        flex-direction : column;
+        align-items : center;
+    }
+    .gpt3__footer-early {
+        margin-bottom : 6rem;
+    }
+    .gpt3__footer-about__topic {
+        margin-right : 0;
+        margin-bottom : 8rem;
+    }
+}
+
+@media screen and (max-width : 930px) {
+    .gpt3__footer {
+        padding-left : 3rem;
+        padding-right : 3rem;
+    }
+}
+
+@media screen and (max-width : 550px) {
+    .gpt3__footer {
+        padding-left : 2rem;
+        padding-right : 2rem;
+    }
+    .gpt3__footer-early {
+        margin-bottom : 5rem;
+    }
+    .gpt3__footer-about__topic {
+        margin-bottom : 5rem;
+    }
+}

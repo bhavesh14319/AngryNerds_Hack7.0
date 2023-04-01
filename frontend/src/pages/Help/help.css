@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-family: 'Manrope', sans-serif;
+
+  /* --gradient-text: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%); */
+  /* --gradient-text: linear-gradient(90deg, rgba(216,245,222,1) 0%, rgba(0,254,255,1) 100%); */
+  --gradient-text : #379237;
+  /* --gradient-bar: linear-gradient(90deg, rgba(216,245,222,1) 0%, rgba(0,254,255,1) 100%);
+   */
+   --gradient-bar : #82CD47;
+  
+  --color-bg: #d8f5de;
+  --color-footer : #82CD47;
+  --color-blog: #82CD47;
+  --color-text: #379237;
+  --color-subtext: #0a410a ;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: white;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+.section__padding {
+    padding: 4rem 6rem;
+}
+
+.section__margin {
+    margin: 4rem 6rem;
+}
+
+.farmeasy__help{
+    display : flex;
+    flex-direction : column;
+}
+
+.farmeasy__help-topic {
+    display : flex;
+    justify-content : center;
+    margin-bottom : 4rem;
+}
+
+.farmeasy__help-topic p {
+    color : #379237  ;
+    font-size : 32px;
+    font-weight : 800;
+    margin-bottom : 2rem;
+}
+
+.farmeasy__help-container {
+    display : flex;
+    gap : 1rem;
+    flex-direction : row;
+    justify-content: space-between;
+}
+
+.farmeasy__help-container1 {
+    flex : 1;
+}
+
+.farmeasy__help-container2 {
+    flex : 1;
+}

@@ -3,9 +3,7 @@ const { sendSuccess, sendError } = require('../utils/apiResponse');
 
 
 const showAllProducts = async(req,res)=>{
-    const products =await Product.find();
-
-
+    const products = await Product.find();
     return sendSuccess(res, 200, "Fetched All Products", {products});
 }
 
@@ -20,7 +18,9 @@ const showProductsForRent = async (req,res)=>{
 
 
 const showSellProdcuts = async (req,res)=>{
-    const products = await Product.find({onRent:false});
+    const products = await Product.find({
+        onRent: false
+    });
     return sendSuccess(res, 200, "Fetched All Products For Sell", {products});
 
 }
