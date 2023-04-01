@@ -8,8 +8,8 @@ import ProfileFull from './pages/Admin/Home/ProfileFull/ProfileFull';
 function App() {
   return (
     <div className="App">
-      <Landing/>
-
+      <Landing />
+      <Admin />
     </div>
   );
 }
