@@ -49,36 +49,36 @@ const { uploadImage } = require('../utils/uploadImage');
 const addProduct =async (req,res)=>{
     const {productName,category,price,onRent,ownerId}=req.body;
 
+
     // upload images to cloudinary and get links and add it in array
 
-    let urls = []
-    req.files?.map(async (file,index)=>{
+    let urls = [];
+
+    const requests =  req.files?.map(async (file,index)=>{
         const imagePath = path.join(__dirname, `../uploads/image-${req.files[index].originalname}`);
         const data = await uploadImage(imagePath);
         console.log(data);
         if(data.url){
             urls.push(data.url);
         }
-        console.log("urls",urls);
-    })
-   
-
-    const product = new Product({
-        productName,
-        category,
-        price,
-        onRent,
-        ownerId,
-        Images:urls
+       
     })
 
-    await product.save();
 
 
-
-
-
-    return sendSuccess(res, 200, "Product Added Successfully", {product});
+     Promise.all(requests).then(async() => {
+        const product = new Product({
+            productName,
+            category,
+            price,
+            onRent,
+            ownerId,
+            Images:urls
+        })
+        await product.save();
+        return sendSuccess(res, 200, "Product Added Successfully", {product});
+    })
+      
 
 }
 
