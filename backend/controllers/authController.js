@@ -8,6 +8,29 @@ const { sendSuccess, sendError } = require('../utils/apiResponse');
 const { uploadImage } = require('../utils/uploadImage');
 // const { getToken } = require('../utils/getToken');
 
+const multer = require("multer");
+
+let storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        console.log("file", file);
+        callback(null, "./Uploads/");
+    },
+    filename: function (req, file, callback) {
+        // console.log("multer file:", file);c
+        callback(null, file.originalname);
+    }
+});
+let maxSize = 1000000 * 1000;
+let upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: maxSize
+    }
+});
+
+
+
+
 const signup = async (req, res, next) => {
 
     const { first_name, last_name, phone } = req.body;
