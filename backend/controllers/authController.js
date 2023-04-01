@@ -1,4 +1,4 @@
-const User = require('../models/userModel');
+const Customer = require('../models/customerModel');
 const path = require('path');
 // const Credential = require('../models/credentialModel');
 const catchAsync = require('../utils/catchAsync');
@@ -35,14 +35,16 @@ const signup = async (req, res, next) => {
     // const imagePath = path.join(__dirname, `../uploads/image-${req.files[0].originalname}`)
     // const data = await uploadImage(imagePath);
 
-    const user = new User({
+    console.log(req.files);
+
+    const customer = new Customer({
         first_name: first_name,
         last_name: last_name,
         phone: phone,
     });
 
     // await credential.save();
-    await user.save();
+    await customer.save();
 
 
 
@@ -50,7 +52,7 @@ const signup = async (req, res, next) => {
 
     const finalResponse = {
         // credential,
-        user,
+        customer,
         // token
     }
 
