@@ -85,7 +85,31 @@ const createOrder = async (req, res, next) => {
         product_id: product_id
     });
     await order.save();
-
+    const finalResponse = {
+        order: order
+    }
+    return sendSuccess(res, 200, "Order Created", finalResponse);
 };
 
-module.exports = { addProduct, createOrder };
+const getAllBuyOrder = async (req, res, next) => {
+    const { buyer_id } = req.body;
+    const orders = await Order.find({
+        'buyer_id': buyer_id
+    }).populate('product_id', 'productName category price onRent Images owner_id');
+    const finalResponse = {
+        orders: orders
+    }
+    return sendSuccess(res, 200, "All Buy Order", finalResponse);
+};
+
+const getAllSellOrder = async () => {
+    const { seller_id } = req.body;
+    const orders = Order.find({
+        seller_id: seller_id
+    }).populate('product_id', 'productName category price onRent Images owner_id');;
+    const finalResponse = {
+        orders: orders
+    }
+    return sendSuccess(res, 200, "All Sell Order", finalResponse);
+};
+module.exports = { addProduct, createOrder, getAllBuyOrder, getAllSellOrder };
