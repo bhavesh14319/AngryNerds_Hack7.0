@@ -1,0 +1,16 @@
+.equipments_page{
+    display: flex;
+    flex-direction: row;
+    background-color: #d8f5de;
+}
+.filters_equipment{
+    flex: 1;
+    padding: 2rem;
+    border: 1px solid  black;
+    background-color: #d8f5de;
+}
+.products_grid{
+    flex: 3;
+    padding: 3rem;
+    border: 1px solid  #000;
+}
