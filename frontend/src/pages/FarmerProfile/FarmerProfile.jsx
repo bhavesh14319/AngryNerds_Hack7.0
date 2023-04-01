@@ -11,7 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import Navbar from "../../../components/navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar";
+import ProductsCaraousel from "./ProductsCaraousel";
 
 function FarmerProfile() {
   return (
@@ -35,6 +36,7 @@ function FarmerProfile() {
             border: "1px solid grey",
             borderRadius: "1rem",
             marginTop: "40px ",
+            height:"400px"
           }}
         >
           <Box
@@ -60,7 +62,7 @@ function FarmerProfile() {
             </Button>
           </Box>
         </div>
-         <div
+        <div
           className="profile_details"
           style={{ flex: 3, padding: "20px 50px " }}
         >
@@ -153,9 +155,19 @@ function FarmerProfile() {
               </FormControl>
             </Grid>
           </Grid>*/}
-
-          
-        </div> 
+          <Box sx={{mt:5}}> 
+          <Typography variant="h5" align="center" color='#379237'>Product's For Sale</Typography>
+            <Grid item xs={12}>
+              <ProductsCaraousel />
+            </Grid>
+          </Box>
+          <Box sx={{mt:5}}> 
+          <Typography variant="h5" align="center" color='#379237'>Product's For Rent</Typography>
+            <Grid item xs={12}>
+              <ProductsCaraousel />
+            </Grid>
+          </Box>
+        </div>
       </div>
       {/* <Box sx={{display:"flex" , justifyContent:"center"}}>
         <Button variant="contained" >
