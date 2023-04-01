@@ -1,12 +1,13 @@
 const Product = require("../models/producModel");
 const Order = require("../models/orderModel");
 const Customer = require('../models/customerModel');
+const Admin = require("../models/adminModel");
 const { sendSuccess, sendError } = require('../utils/apiResponse');
 const path = require('path');
 const { uploadImage } = require('../utils/uploadImage');
 
 const addProduct =async (req,res)=>{
-    const {productName,category,price,onRent,owner_id}=req.body;
+    const {productName,category,price,onRent,owner_id,isVerified}=req.body;
 
 
     // upload images to cloudinary and get links and add it in array
@@ -100,4 +101,25 @@ const getAllSellOrder = async () => {
     }
     return sendSuccess(res, 200, "All Sell Order", finalResponse);
 };
-module.exports = { addProduct, createOrder, getAllBuyOrder, getAllSellOrder };
+
+
+const createSellerRequest =async (req,res)=>{
+    const {customer_id}=req.body;
+    
+    let admin = await Admin.find();
+
+    admin[0].sellerRequests=admin[0].sellerRequests.filter((id)=>id!=customer_id);
+
+    admin[0].sellerRequests.push(customer_id);
+
+
+
+    let updatedAdmin = await Admin.findByIdAndUpdate(admin[0]._id, {
+        sellerRequests:  admin[0].sellerRequests
+
+    }, { new: true });
+
+    return sendSuccess(res, 200, "Seller Request Submitted", {updatedAdmin});
+
+}
+module.exports = { addProduct, createOrder, getAllBuyOrder, getAllSellOrder ,createSellerRequest};
