@@ -16,7 +16,15 @@ const customerSchema = new mongoose.Schema({
     phone: {
         type: String,
     },
-
+    sellProducts :{
+        type:Array
+    },
+    rentProducts :{
+        type:Array,
+    },
+    
+    isAdmin:Boolean,   
+    isSeller:Boolean,
 }, { timestamps: true })
 
 const Customer = mongoose.model('Customer', customerSchema);
