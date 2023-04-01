@@ -16,6 +16,8 @@ export const Admin = () => {
     }
     const getUnverifiedUser = async () => {
         const data = await axios.get('http://localhost:3000/api/admin/v1/getUnverifiedUsers');
+        console.log(data.data.data.users)
+        setUnverifiedUser(data.data.data.users);
     };
     useEffect(() => {
         getUnverifiedUser();
@@ -35,7 +37,7 @@ export const Admin = () => {
                 </div>
 
                 <div className="farmeasy__admin-container">
-                    {((currtab === 1) && <Profile />)}
+                    {((currtab === 1) && <Profile data={unverifiedUser} />)}
                     {((currtab === 2) && <Home />)}
 
                 </div>

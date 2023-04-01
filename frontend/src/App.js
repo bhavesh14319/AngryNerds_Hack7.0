@@ -10,6 +10,8 @@ import Landing from "../src/pages/Landing/Landing";
 import Government from "./pages/Schemes/Governmnet";
 import FarmerProfile from "./pages/Help/FarmerProfile/FarmerProfile";
 import SignUp from "./pages/Login/SignUp";
+import Admin from "./pages/Admin/Admin";
+import Random from "./pages/Random/Random";
 
 const theme = createTheme({
   palette: {
@@ -19,16 +21,11 @@ const theme = createTheme({
   },
 });
 
-function App() {
+const App = () => {
   return (
-    // <ChakraProvider>
-    <Routes>
-      <BrowserRouter>
-        <Route path="/" element={<Landing />} />
-      </BrowserRouter>
-    </Routes>
-    // <Login />
-    // </ChakraProvider>
+    <>
+      <Admin />
+    </>
   );
 }
 

@@ -25,7 +25,7 @@ const new_list = [
     }
 ]
 
-const Profile = () => {
+const Profile = (props) => {
 
     const [view, setView] = useState(false);
 
@@ -33,6 +33,7 @@ const Profile = () => {
         e.preventDefault();
         setView(true);
     }
+    const { data } = props;
     return (
         <div className="farmeasy__profile">
             <div className="farmeasy__profile-unverified">
@@ -40,15 +41,15 @@ const Profile = () => {
                 <p>Unverified Users</p>
             </div>
             <div className="farmeasy__profiles">
-
-                <Card name={new_list[0].name} imgSrc={new_list[0].imgSrc} />
-                <Card name={new_list[1].name} imgSrc={new_list[1].imgSrc} />
-                <Card name={new_list[2].name} imgSrc={new_list[2].imgSrc} />
-
+                {
+                    data.map(() => {
+                        return <Card name={data.first_name} imgSrc={data.image} />
+                    })
+                }
             </div>
             <div className="farmeasy__profile-viewall">
                 <button>
-                    <p>view All >></p>
+                    <p>view All</p>
                 </button>
             </div>
         </div>
