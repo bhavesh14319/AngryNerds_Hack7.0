@@ -3,13 +3,14 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: var(--color-footer);
+    background: #379237;
     padding: 6rem 10rem 2rem;
 }
 
 .gpt3__footer-title {
     max-width: 900px;
     margin-bottom: 4rem;
+    color : white;
 }
 
 .gpt3__footer-title p {
@@ -26,11 +27,14 @@
 
 .gpt3__footer-early button {
     cursor: pointer;
-    background: var(--color-footer);
-    border: solid white 1px;
-    padding: 1rem;
+    background: #0a410a;
+    border : none;
+    /* border: solid white 1px; */
+    border-radius : 20px;
+    padding: 1.5rem;
     color: white;
     font-size: 18px;
+    font-weight : 800;
     line-height: 21px;
     font-family: var(--font-family);
 }
