@@ -17,10 +17,11 @@ const customerSchema = new mongoose.Schema({
         type: String,
     },
     sellProducts :{
-        type:Array
+        type:[mongoose.Schema.Types.ObjectId]
     },
     rentProducts :{
-        type:Array,
+        type:[mongoose.Schema.Types.ObjectId]
+
     },
     
     isAdmin:Boolean,   
