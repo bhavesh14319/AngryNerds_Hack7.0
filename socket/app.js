@@ -16,9 +16,8 @@ io.use((socket, next) => {
 
 io.on('connection', (socket) => {
     console.log('Connection Established');
-    
 })
 
-httpServer.listen(3000, () => {
-    console.log('Server is running at 3000');
+httpServer.listen(8080, () => {
+    console.log('Server is running at 3002');
 })
