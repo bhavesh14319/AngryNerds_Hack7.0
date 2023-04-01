@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 
-const customerSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     first_name: {
         type: String,
     },
     last_name: {
         type: String,
-    },
-    aadhar_details: {
-        type: Object,
     },
     image: {
         type: String
@@ -16,17 +13,20 @@ const customerSchema = new mongoose.Schema({
     phone: {
         type: String,
     },
-    sellProducts :{
+    email:{
+        type:String,
+    },
+    unverifiedUsers:{
         type:[mongoose.Schema.Types.ObjectId]
     },
-    rentProducts :{
+    sellerRequests:{
         type:[mongoose.Schema.Types.ObjectId]
-
     },
-    isVerified:Boolean,
-    isAdmin:Boolean,   
-    isSeller:Boolean,
-}, { timestamps: true })
 
-const Customer = mongoose.model('Customer', customerSchema);
-module.exports = Customer;
+    ordersQueue:{
+        type:[mongoose.Schema.Types.ObjectId]
+    }
+});
+
+const Admin = mongoose.model('Admin',adminSchema );
+module.exports = Admin;

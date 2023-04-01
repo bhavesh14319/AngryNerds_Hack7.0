@@ -1,5 +1,6 @@
 const axios = require('axios');
 const Customer = require('../models/customerModel');
+const Admin = require("../models/adminModel")
 const path = require('path');
 const fs = require('fs');
 // const Credential = require('../models/credentialModel');
@@ -33,28 +34,8 @@ let upload = multer({
 
 const signup = async (req, res, next) => {
 
-    const { first_name, last_name, phone } = req.body;
+    const { first_name, last_name, phone,isVerified } = req.body;
 
-    // const login = await Credential.findOne({ "phone": phone, "email": email });
-    // const userExist = await User.findOne({ "user_id": login?._id });
-    // if (userExist) {
-    //     const credential = {
-    //         phone: phone,
-    //         email: email
-    //     }
-    //     const token = getToken(credential, userExist);
-    //     const finalResponse = {
-    //         credential,
-    //         user: userExist,
-    //         token
-    //     }
-    //     return sendSuccess(res, 200, 'Login Successfully', finalResponse);
-    // }
-
-    // const credential = new Credential({
-    //     phone: phone,
-    //     email: email
-    // });
 
 
     const imagePath = path.join(__dirname, `../uploads/image-${req.files[0].originalname}`)
@@ -70,6 +51,7 @@ const signup = async (req, res, next) => {
         last_name: last_name,
         image: data.url,
         phone: phone,
+        isVerified
     });
 
     // await credential.save();
