@@ -34,10 +34,29 @@ const Profile = () => {
         setView(true);
     }
     return (
-        <div className="farmeasy__profile">
+        <>
+            <div className="farmeasy__profile">
+                <div className="farmeasy__profile-unverified">
+                    <div className='farmeasy__profile-box'></div>
+                    <p>Unverified Users</p>
+                </div>
+                <div className="farmeasy__profiles">
+
+                    <Card name={new_list[0].name} imgSrc={new_list[0].imgSrc} />
+                    <Card name={new_list[1].name} imgSrc={new_list[1].imgSrc} />
+                    <Card name={new_list[2].name} imgSrc={new_list[2].imgSrc} />
+
+                </div>
+                <div className="farmeasy__profile-viewall">
+                    <button>
+                        <p>view All >></p>
+                    </button>
+                </div>
+            </div>
+            <div className="farmeasy__profile">
             <div className="farmeasy__profile-unverified">
                 <div className='farmeasy__profile-box'></div>
-                <p>Unverified Users</p>
+                <p>Seller Request</p>
             </div>
             <div className="farmeasy__profiles">
 
@@ -52,6 +71,7 @@ const Profile = () => {
                 </button>
             </div>
         </div>
+        </>
     )
 }
 
