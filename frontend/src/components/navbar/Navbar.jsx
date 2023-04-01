@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './navbar.css'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import logo from '../../assets/logo.svg';
+import { useNavigate } from "react-router-dom";
+
 
 const Menu = () => {
   return (
@@ -18,6 +20,7 @@ const Menu = () => {
 const Navbar = () => {
 
   const [toggleMenu, setToggleMenu] = useState(false); // initial value of toggleMenu is false
+  const navigate = useNavigate();
 
   return (
     <div className="gpt3__navbar">
@@ -30,8 +33,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-        <p>Sign in</p>
-        <button type="button">Sign Up</button>
+        <p onClick={()=>navigate("/login")}>Sign in</p>
+        <button type="button" onClick={()=>navigate("/signup")}>Sign Up</button>
       </div>
       <div className="gpt3__navbar-menu">
         {toggleMenu

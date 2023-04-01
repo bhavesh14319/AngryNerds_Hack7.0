@@ -1,5 +1,5 @@
 import React from "react";
-import {Blog,Features,Footer,Header,Possibility,WhatGPT3} from "./containers";
+import { Blog, Features, Footer, Header, Possibility, WhatGPT3 } from "./containers";
 import { Article, Brand, CTA, Feature } from "./components";
 import Navbar from '../../components/navbar/Navbar'
 import './Landing.css'

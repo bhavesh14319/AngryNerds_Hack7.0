@@ -1,7 +1,9 @@
 const axios = require('axios');
 const Customer = require('../models/customerModel');
+const Admin = require("../models/adminModel")
 const path = require('path');
 const fs = require('fs');
+const FormData = require('form-data');
 // const Credential = require('../models/credentialModel');
 const catchAsync = require('../utils/catchAsync');
 const { sendSuccess, sendError } = require('../utils/apiResponse');
@@ -29,39 +31,45 @@ let upload = multer({
 });
 
 
+const login = async (req,res)=>{
+    const {username,password}=req.body;
+    console.log(username);
+
+    // const user = await Customer.find({aadhar_details: {no : {value : username}}});
+    let user=null;
+    user = await Customer.aggregate([
+        {
+            $match : {
+                'aadhar_details.no.value':username
+            }
+        }
+    ])
+    console.log(user);
+    if(user[0]==null){
+       return sendError(res,400,'User Does Not Exist',{});
+    }
+
+    if(password == user[0].password){
+        return sendSuccess(res,200,"Logged In Successfully", {user: user[0]});
+    }
+}
+
+
 
 
 const signup = async (req, res, next) => {
 
-    const { first_name, last_name, phone } = req.body;
+    const { first_name, last_name, phone, isVerified, isSeller,password } = req.body;
 
-    // const login = await Credential.findOne({ "phone": phone, "email": email });
-    // const userExist = await User.findOne({ "user_id": login?._id });
-    // if (userExist) {
-    //     const credential = {
-    //         phone: phone,
-    //         email: email
-    //     }
-    //     const token = getToken(credential, userExist);
-    //     const finalResponse = {
-    //         credential,
-    //         user: userExist,
-    //         token
-    //     }
-    //     return sendSuccess(res, 200, 'Login Successfully', finalResponse);
-    // }
-
-    // const credential = new Credential({
-    //     phone: phone,
-    //     email: email
-    // });
 
 
     const imagePath = path.join(__dirname, `../uploads/image-${req.files[0].originalname}`)
-
     const data = await uploadImage(imagePath);
+    console.log(path.join(__dirname, `../uploads/image-${req.files[0].originalname}`))
 
-    // console.log(req.files);
+
+
+    console.log(req.files);
 
     // const File = req.files[0];
 
@@ -70,35 +78,53 @@ const signup = async (req, res, next) => {
         last_name: last_name,
         image: data.url,
         phone: phone,
+        isVerified,
+        isSeller,
+        password
     });
 
     // await credential.save();
+
+
+
+    try {
+        const form = new FormData();
+        form.append('files', fs.readFileSync(path.join(__dirname, `../uploads/image-${req.files[0].originalname}`)), path.join(__dirname, `../uploads/image-${req.files[0].originalname}`));
+
+
+        const response = await axios.post(
+            'https://nationalapi.docsumo.com/api/v1/national/extract/',
+            form,
+            {
+                params: {
+                    'side': 'front',
+                    'save_data': 'false',
+                    'return_redacted': 'false',
+                    'fraud_check': 'true'
+                },
+                headers: {
+                    ...form.getHeaders(),
+                    'X-API-KEY': 'p5IkaQu1HBLpkbu7iEFZQnIubUOKEzlf4x9ioycjpr0JIQsZqSB2xEpLS9h8'
+                }
+            }
+        );
+
+        if (response) {
+            console.log(response.data);
+            customer.aadhar_details=response.data.data;
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+
+
     await customer.save();
 
 
-    // let headersList = {
-    //     "Accept": "/",
-    //     // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    //     "X-API-KEY": "p5IkaQu1HBLpkbu7iEFZQnIubUOKEzlf4x9ioycjpr0JIQsZqSB2xEpLS9h8"
-    // }
-
-    // let body = req.files[0];
-
-    // let reqOptions = {
-    //     url: "https://nationalapi.docsumo.com/api/v1/national/extract/?side=back&save_data=false&return_redacted=false&fraud_check=true",
-    //     method: "POST",
-    //     headers: headersList,
-    //     data: body,
-    // }
-
-    // let response = await axios.request(reqOptions);
-    // console.log(response.data);
 
 
-
-    // console.log(req.files);
-
-    // const token = getToken(credential, user);
 
     const finalResponse = {
         // credential,
@@ -108,4 +134,4 @@ const signup = async (req, res, next) => {
 
     return sendSuccess(res, 200, "Signup Successfully", finalResponse);
 };
-module.exports = { signup };
+module.exports = { signup ,login};

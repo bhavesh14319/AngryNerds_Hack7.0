@@ -23,9 +23,12 @@ const customerSchema = new mongoose.Schema({
         type:[mongoose.Schema.Types.ObjectId]
 
     },
-    
+    isVerified:Boolean,
     isAdmin:Boolean,   
     isSeller:Boolean,
+    password:{
+        type:String,
+    }
 }, { timestamps: true })
 
 const Customer = mongoose.model('Customer', customerSchema);
