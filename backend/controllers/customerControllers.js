@@ -1,4 +1,5 @@
 const Product = require("../models/producModel");
+const Order = require("../models/orderModel");
 const { sendSuccess, sendError } = require('../utils/apiResponse');
 const path = require('path');
 const { uploadImage } = require('../utils/uploadImage');
@@ -46,41 +47,45 @@ const { uploadImage } = require('../utils/uploadImage');
 //     });
 // };
 
-const addProduct =async (req,res)=>{
-    const {productName,category,price,onRent,ownerId}=req.body;
-
-
-    // upload images to cloudinary and get links and add it in array
+const addProduct = async (req, res, next) => {
+    const { productName, category, price, onRent, ownerId } = req.body;
 
     let urls = [];
 
-    const requests =  req.files?.map(async (file,index)=>{
+    const requests = req.files?.map(async (file, index) => {
         const imagePath = path.join(__dirname, `../uploads/image-${req.files[index].originalname}`);
         const data = await uploadImage(imagePath);
         console.log(data);
-        if(data.url){
+        if (data.url) {
             urls.push(data.url);
         }
-       
+
     })
 
-
-
-     Promise.all(requests).then(async() => {
+    Promise.all(requests).then(async () => {
         const product = new Product({
             productName,
             category,
             price,
             onRent,
             ownerId,
-            Images:urls
+            Images: urls
         })
         await product.save();
-        return sendSuccess(res, 200, "Product Added Successfully", {product});
+        return sendSuccess(res, 200, "Product Added Successfully", { product });
     })
-      
-
 }
 
 
-module.exports={addProduct};
+const createOrder = async (req, res, next) => {
+    const { seller_id, buyer_id, product_id } = req.body;
+    const order = new Order({
+        seller_id: seller_id,
+        buyer_id: buyer_id,
+        product_id: product_id
+    });
+    await order.save();
+
+};
+
+module.exports = { addProduct, createOrder };

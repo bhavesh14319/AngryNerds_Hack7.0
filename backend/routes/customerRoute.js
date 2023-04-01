@@ -1,5 +1,5 @@
 const express = require('express');
-const {addProduct} = require('../controllers/customerControllers')
+const {addProduct, createOrder} = require('../controllers/customerControllers')
 // const { followUser, allFollower, profile, me, friends } = require('../controllers/userController');
 // const globalAccess = require('../middlewares/auth');
 // const globalAccess = require('../middlewares/auth');
@@ -9,6 +9,7 @@ const router = express.Router();
 
 
 router.post("/addProduct", upload.any(), addProduct);
+router.post("/createOrder", createOrder);
 
 // router.post("/follow/:id", globalAccess, followUser);
 // router.get("/allFollower", globalAccess, allFollower);

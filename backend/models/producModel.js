@@ -1,12 +1,25 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-    productName:String,
-    category:String,
-    price:Number,
-    onRent:Boolean,
-    Images:Array,
-    ownerId:String,
+    productName: {
+        type: String,
+    },
+    category: {
+        type: String,
+    },
+    price: {
+        type: String,
+    },
+    onRent: {
+        type: Boolean,
+    },
+    Images: {
+        type: Array,
+    },
+    owner_id: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Customer'
+    },
 })
 
 const Product = mongoose.model('Product', productSchema);
