@@ -12,10 +12,10 @@ export default function SchemeCard({data}) {
   console.log(data)
 
   return (
-    <Card sx={{ width:'100%', maxHeight:'400px', height:'100%'}}>
+    <Card sx={{ width:'100%', maxHeight:'400px', height:'100%' ,borderRadius:'1rem' , boxShadow:'7'}}>
       <a href={`${data.href}`} target="_blank" rel='noreferrer' style={{textDecoration:'none', color:'black'}}>
       <CardContent>
-      <Typography variant="h3" color="text.secondary">
+      <Typography align='center' variant="h6" color="#379237">
           {data.title}
         </Typography>
       </CardContent>
@@ -28,7 +28,7 @@ export default function SchemeCard({data}) {
       />
       <CardContent>
       
-        <Typography variant="body2" color="text.secondary" sx={{textJustify:"center", textAlign:'justify'}}>
+        <Typography variant="body2" color="#379237" sx={{textJustify:"center", textAlign:'justify',fontWeight:'300'}}>
           {data.text}
         </Typography>
       </CardContent>

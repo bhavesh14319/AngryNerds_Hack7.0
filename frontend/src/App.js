@@ -9,6 +9,7 @@ import Equipments from "./pages/Equipments/Equipments";
 import Landing from "../src/pages/Landing/Landing";
 import { ChakraProvider } from "@chakra-ui/react";
 import Government from "./pages/Schemes/Governmnet";
+import FarmerProfile from "./pages/Help/FarmerProfile/FarmerProfile";
 
 const theme = createTheme({
   palette: {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/products" element={<Equipments />} />
             <Route path="/landing" element={<Landing />} />
             <Route path="/governmnet" element={<Government />} />
+            <Route path="/Profile" element={<FarmerProfile />} />
           </Routes>
         </BrowserRouter>
       // </ChakraProvider>

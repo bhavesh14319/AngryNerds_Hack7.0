@@ -88,7 +88,7 @@ export default function SignUp() {
         }
       }
     });
-
+    
     if (!limitExceeded) {
       setUploadedImages(uploaded);
     }
