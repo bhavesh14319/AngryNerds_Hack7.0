@@ -1,0 +1,178 @@
+.gpt3__header {
+    display : flex;
+    flex-direction : row;
+}
+
+.gpt3__header-content{
+    flex:2;
+    display : flex;
+    flex-direction: column;
+    justify-content : center;
+    align-items : flex-start;   
+    margin-right : 5rem;
+}
+
+.gpt3__header-content h1 {
+    font-family : var(--font-family);
+    font-weight: 800;
+    font-size : 62px;
+    line-height : 75px;
+    letter-spacing: -0.04em;
+    color : var(--color-text);
+}
+
+.gpt3__header-content p{
+    width : 85%;
+    font-family : var(--font-family);
+    font-weight: normal;
+    font-size :30px;
+    line-height : 35px;
+    color : #54B435;
+    margin-top : 1.5rem;
+}
+
+.gpt3__header-content__input {
+    width : 90%;
+    margin-top : 1.5rem;
+    display : flex;
+    min-height : 65px;
+}
+
+.gpt3__header-content__input input{
+    flex: 3;
+    background : #379237;
+    border : solid #379237;
+    color : var(--color-text);
+    font-size : 20px;
+    line-height: 27px;
+    padding-left : 2rem;
+    border-radius : 5px 0 0 5px;
+    color : #d8f5de;
+
+}
+
+::placeholder {
+    color : #d8f5de;
+    font-size : 20px;
+}
+
+.gpt3__header-content__input input:focus {
+    outline : none;
+}
+
+.gpt3__header-content__input button {
+    flex : 1;
+     background: #0a410a;
+     /* color : #d8f5de; */
+     color : white;
+     border-radius : 0 5px 5px 0;
+     border : none;
+     cursor : pointer;
+     font-size : 20px;
+     line-height :27px;
+     font-weight: 700;
+     font-family: var(--font-family);
+     /* line-height: 25px; */
+}
+
+.gpt3__header-content__people {
+    width : 100%;
+    display : flex;
+    margin-top : 1.5rem;
+    align-items : center;
+}
+
+.gpt3__header-content__people p{
+    font-family : var(--font-family);
+    color : #379237;
+    font-size : 12px;
+    margin-top : 0;
+    line-height : 16px;
+}
+
+.gpt3__header-content__people img {
+    margin-right : 1rem;
+    width : 182px;
+}
+
+.gpt3__header-image {
+    flex : 1;
+    display : flex;
+    align-items : center;
+    justify-content: center;
+}
+
+.gpt3__header-image img{
+    width : 150%;
+    position : relative;
+    top : -5%;
+    left : -8%;
+}
+
+@media screen and (max-width : 1050px) {
+    .gpt3__header {
+        flex-direction : column-reverse;
+    }
+
+    .gpt3__header-image img{
+        width : 50%;
+        position :initial;
+    }
+
+    .gpt3__header-content {
+        width : 100%;
+        text-align: center;
+        align-items: center;
+    }
+    .gpt3__header-content__people p{
+        text-align : left;
+    }
+
+}
+
+@media screen and (max-width : 650px) {
+    .gpt3__header {
+        margin : 2rem 1.5rem !important;
+        padding : 0 !important;
+    }
+    .gpt3__header-content__people {
+        flex-direction: column;
+    }
+    .gpt3__header-content h1 {
+        font-weight: 800;
+        font-size : 40px;
+        line-height : 46px;
+    }
+    .gpt3__header-content__people p{
+        font-size : 12px;
+        text-align: center;
+    }
+    .gpt3__header-image img{
+        width : 100%;
+        position :initial;
+    }
+
+    .gpt3__header-content__input {
+        flex-direction: column;
+        align-items: center;
+    }   
+    .gpt3__header-content__input input {
+        font-size : 12px;
+        min-height : 50px;
+        width : 100%;
+        text-align : center;
+        margin-bottom : 1.5rem;
+        border-radius : 5px;
+        padding-left : 0;
+    } 
+    ::placeholder {
+        font-size : 12px;
+    }
+    .gpt3__header-content__input button {
+        width : 50%;
+        min-height : 40px;
+        border-radius: 5px;
+        font-size : 12px;
+        
+    }
+}

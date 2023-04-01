@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+    --font-family: 'Manrope', sans-serif;
+
+    /* --gradient-text: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%); */
+    /* --gradient-text: linear-gradient(90deg, rgba(216,245,222,1) 0%, rgba(0,254,255,1) 100%); */
+    --gradient-text: #379237;
+    /* --gradient-bar: linear-gradient(90deg, rgba(216,245,222,1) 0%, rgba(0,254,255,1) 100%);
+   */
+    --gradient-bar: #82CD47;
+
+    --color-bg: #d8f5de;
+    --color-footer: #82CD47;
+    --color-blog: #82CD47;
+    --color-text: #379237;
+    --color-subtext: #0a410a;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: white;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+.section__padding {
+    padding: 4rem 6rem;
+}
+
+.section__margin {
+    margin: 4rem 6rem;
+}
+
+.farmeasy__helpsub {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.farmeasy__helpsub-topic { 
+    width : 100%;
+    display : flex;
+    align-items : center;
+    justify-content: center;
+    
+}
+
+.farmeasy__helpsub-topic p{
+    font-size : 30px;
+    font-weight: 800;
+    margin-bottom : 1rem;
+}
+
+.helpsub__wrapper {
+    width : 100%;
+}
+
+p {
+    font-family: var(--font-family);
+}
+
+
+.helpsub__heading {
+    display: flex;
+    min-width: 200px;
+    font-family: var(--font-family);
+    font-size: 24px;
+    color: #3c953c;
+    font-weight: 800;
+}
+
+.helpsub__desc {
+    font-size : 18px;
+    color: #8cc255;
+}
+
+#panel2a-header {
+    width: 100%;
+    display: flex;
+    flex: 1;
+}
