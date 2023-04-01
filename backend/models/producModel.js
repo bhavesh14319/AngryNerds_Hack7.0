@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema({
         type: Array,
     },
     owner_id: {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Customer'
     },
 })
