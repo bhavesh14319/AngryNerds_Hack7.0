@@ -10,6 +10,9 @@ const Card = ({name, imgSrc}) => {
         </div>
         <div className="farmeasy__card-name">
             <p>{name}</p>
+            <div className="farmeasy__card-name__button">
+              <button>Verify</button>
+            </div>
         </div>
     </div>
   )

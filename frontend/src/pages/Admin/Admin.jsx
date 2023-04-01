@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios  from 'axios';
 import Navbar from '../../components/navbar/Navbar'
-import Home from './Home/Home'
+// import Home from './Home/Home'
+import AdminPro from '../Admin/AdminPro/AdminPro'
 import Profile from './Profile/Profile'
 import './admin.css'
 
@@ -27,17 +28,17 @@ export const Admin = () => {
             <div className="farmeasy__admin section__padding">
                 <div className="farmeasy__admin-tabscontainer">
                     <div className="farmeasy__admin-tab">
-                        <button onClick={() => { setCurrtab(1) }}>Profile</button>
+                        <button onClick={() => { setCurrtab(1) }}>Home</button>
                     </div>
                     <div className="farmeasy__admin-tab">
-                        <button onClick={() => { setCurrtab(2) }}>Home</button>
+                        <button onClick={() => { setCurrtab(2) }}>Profile</button>
                     </div>
                 </div>
 
                 <div className="farmeasy__admin-container">
                     {((currtab === 1) && <Profile />)}
-                    {((currtab === 2) && <Home />)}
-
+                    {((currtab === 2) && <AdminPro />)}
+                    
                 </div>
 
 

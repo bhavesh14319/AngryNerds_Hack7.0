@@ -35,11 +35,11 @@ const new_list = [
 const ProfileFull = () => {
     return (
         <div className="farmeasy__profilefull">
-            <div className="farmeasy__profile-unverified">
+            <div className="farmeasy__profilefull-unverified">
                 <div className='farmeasy__profile-box'></div>
                 <p>Unverified Users</p>
             </div>
-            <div className="farmeasy__profiles">
+            <div className="farmeasy__profilefull-profiles">
                 {(new_list.map((value) => {
                     return <Card name={value.name} imgSrc={value.imgSrc} />
                 }))}

@@ -19,7 +19,7 @@
     margin-bottom : 0.5rem;
 }
 
-.farmeasy__profile-unverified p {
+.farmeasy__profilefull-unverified p {
     padding: 0.5rem 1.5rem;
     font-size: 34px;
     font-weight: 800;
@@ -27,7 +27,7 @@
     color : #379237;
 }
 
-.farmeasy__profiles {
+.farmeasy__profilefull-profiles {
     display: grid;
 
     grid-template-columns: repeat(4, 1fr);
