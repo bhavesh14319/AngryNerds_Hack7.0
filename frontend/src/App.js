@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { green } from "@mui/material/colors";
 import Equipments from "./pages/Equipments/Equipments";
+import Landing from "../src/pages/Landing/Landing";
 import { ChakraProvider } from "@chakra-ui/react";
+import Government from "./pages/Schemes/Governmnet";
 
 const theme = createTheme({
   palette: {
@@ -25,6 +27,8 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/products" element={<Equipments />} />
+            <Route path="/landing" element={<Landing />} />
+            <Route path="/governmnet" element={<Government />} />
           </Routes>
         </BrowserRouter>
       // </ChakraProvider>

@@ -14,7 +14,7 @@ import {
 import "../../styles/equipmentspage.css";
 import "./Slider.css";
 import DatePicker from "./DatePicker";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 
 function Equipments() {
   const allRanges = document.querySelectorAll(".range-wrap");
