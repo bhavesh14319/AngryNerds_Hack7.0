@@ -22,11 +22,15 @@ const theme = createTheme({
 function App() {
   return (
     // <ChakraProvider>
+    <BrowserRouter>
     <Routes>
-      <BrowserRouter>
+     
         <Route path="/" element={<Landing />} />
-      </BrowserRouter>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      
     </Routes>
+    </BrowserRouter>
     // <Login />
     // </ChakraProvider>
   );
