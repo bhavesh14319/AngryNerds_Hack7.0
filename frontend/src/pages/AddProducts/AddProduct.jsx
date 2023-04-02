@@ -13,6 +13,7 @@ import {
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { inputLabelClasses } from "@mui/material/InputLabel";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 function AddProduct() {
   return (
@@ -38,6 +39,7 @@ function AddProduct() {
             marginTop: "152px ",
             height: "400px",
             backgroundColor: "#D8F5DE",
+            boxShadow:'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'
           }}
         >
           <Box
@@ -49,18 +51,14 @@ function AddProduct() {
               pt: 4,
             }}
           >
-            <Avatar
-              alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
-              sx={{ width: 156, height: 156, mb: 2 }}
-            />
+              
+            <CloudUploadIcon sx={{ width: 156, height: 156, mb: 2 ,p:2,borderStyle: 'dashed'}}/>
             <Typography varinat="h2" fontSize={30} sx={{ mb: 3 }}>
               Product Name
             </Typography>
             <Button
               variant="contained"
               component="label"
-              sx={{ backgroundColor: "#0A410A" }}
               fullWidth
               sx={{backgroundColor:"#0A410A",'&:hover': {
                 backgroundColor: "#379237"}}}
