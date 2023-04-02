@@ -10,8 +10,8 @@ const Menu = () => {
   return (
     <>
       <p  onClick={()=>navigate("/Home")}><a>Home</a></p>
-      <p  onClick={()=>navigate("/Profile")}><a >Profile</a></p>
-      <p><a href="#possibility">Schemes</a></p>
+      {/* <p  onClick={()=>navigate("/Profile")}><a >Profile</a></p> */}
+      <p onClick={()=>navigate("/schemes")}><a>Schemes</a></p>
       <p onClick={()=>navigate("/addProduct")}><a href="#features">Be A Seller</a></p>
       {/* <p><a href="#possibility"></a></p>
       <p><a href="#blog">Library</a></p> */}
@@ -30,6 +30,7 @@ const Navbar = () => {
   const handleLogout = ()=>{
     sessionStorage.removeItem("current_user");
     navigate("/");
+    setLoggedIn(false);
   }
 
   useEffect(()=>{
@@ -45,7 +46,9 @@ const Navbar = () => {
     <div className="gpt3__navbar">
       <div className='gpt3__navbar-links'>
         <div className='gpt3__navbar-links_logo'>
-          <img src={logo} alt='logo'></img>
+          {/* <img src={logo} alt='logo'></img>
+           */}
+           <h1 style={{fontSize:"30px",fontWeight:"600",color:"#0A410A"}}>FarmEasy</h1>
         </div>
         <div className="gpt3__navbar-links_contanier ">
           <Menu />

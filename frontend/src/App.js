@@ -37,6 +37,7 @@ function App() {
         <Route path="/home" element={<Equipments />} />
         <Route path="/profile" element={<FarmerProfile />} />
         <Route path="/addProduct" element = {<AddProducts/>}/>
+        <Route path="/schemes" element = {<Government/>}/>
       
     </Routes>
     </BrowserRouter>
