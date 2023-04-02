@@ -1,0 +1,58 @@
+.farmeasy__ordercard {
+    box-sizing: border-box;
+    padding : 1rem 7rem;
+    margin : 2rem 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background : #d8f5de ;
+    border-radius: 10px;
+}
+
+.ordercard__flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.farmeasy__ordercard-img {
+    flex: 2;
+    display : flex;
+    justify-content: center;
+}
+
+.farmeasy__ordercard-img img{
+    border-radius : 10px;
+    height : 120px;
+}
+
+.farmeasy__ordercard-info{
+    flex : 5;
+    background : #379237 ;
+    display : flex;
+    flex-direction: column;
+    gap : 0.5rem;
+    justify-content: space-between;
+    padding : 0.5rem;
+    border-radius: 10px;
+}
+
+.ordercard-info__topic {
+    min-width : 200px;
+    margin-left : 6rem;
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 30px;
+    font-family: var(--font-family);
+    color: white;
+}
+
+.ordercard-info__desc {
+    color: #d8f5de;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 35px;
+}

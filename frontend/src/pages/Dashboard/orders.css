@@ -1,0 +1,30 @@
+.farmeasy__orders {
+  display: flex;
+  flex-direction: column;
+}
+
+.farmeasy__orders-option__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.farmeasy__orders-option__container-pending button,
+.farmeasy__orders-option__container-completed button {
+  flex: 1;
+  background: #0a410a;
+  /* color : #d8f5de; */
+  color: white;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 27px;
+  font-weight: 700;
+  font-family: var(--font-family);
+  line-height: 25px;
+  padding: 1rem 3rem;
+  border-radius: 20px;
+}

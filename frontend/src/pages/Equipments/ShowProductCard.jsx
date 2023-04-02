@@ -6,13 +6,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function ShowProductCard() {
+export default function ShowProductCard({product}) {
   return (
-    <Card sx={{ maxWidth: 345, boxShadow: 10, borderRadius: 3 }}>
+    <Card sx={{ maxWidth: 345, boxShadow: 10, borderRadius: 3 ,paddingTop:0}}>
       <CardMedia
         sx={{ height: 240 }}
-        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR7yC1wjNCpIJtuu7vCkKsrZD8Bd4x-BvtojMKCnKvlg&usqp=CAU&ec=48665699"
-        title="green iguana"
+        image= {product?.Images? product.Images[0] : "" }
+        title="Product Image"
       />
       <CardContent sx={{ backgroundColor: "#d8f5de" }}>
         <Typography
@@ -21,23 +21,24 @@ export default function ShowProductCard() {
           }}
           align="center"
           gutterBottom
-          variant="h6"
+          variant="h4"
         >
-          Tractor
+          {product.productName}
         </Typography>
         <Typography
           sx={{ color: "#0A410A" }}
           variant="h6"
           color="text.secondary"
         >
-          Category
+        <div style={{display:"flex"}}> Category: &nbsp; <h4>{product.category}</h4></div>
+        <div style={{display:"flex"}}> Available On:&nbsp; <h4>{product.onRent? " Rent" : " Sell"}</h4></div>
         </Typography>
         <Typography
           sx={{ color: "#0A410A" }}
-          variant="body2"
+          variant="h6"
           color="text.secondary"
         >
-          Price : Rs.45000
+          Price : Rs.{product.price}
         </Typography>
       </CardContent>
       <CardActions

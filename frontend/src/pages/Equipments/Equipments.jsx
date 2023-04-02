@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ShowProductCard from "./ShowProductCard";
 import {
   Box,
@@ -15,13 +15,13 @@ import "../../styles/equipmentspage.css";
 import "./Slider.css";
 import DatePicker from "./DatePicker";
 import Navbar from "../../components/navbar/Navbar";
+import axios from "axios";
 
 function Equipments() {
   const allRanges = document.querySelectorAll(".range-wrap");
   allRanges.forEach((wrap) => {
     const range = wrap.querySelector(".range");
     const bubble = wrap.querySelector(".bubble");
-
     range.addEventListener("input", () => {
       setBubble(range, bubble);
     });
@@ -38,6 +38,116 @@ function Equipments() {
     // Sorta magic numbers based on size of the native UI thumb
     bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
   }
+
+
+  const [user, setUser] = useState();
+
+  const [products, setProducts] = useState();
+
+  const [rentProducts, setRentProducts] = useState([]);
+  const [buyProducts, setBuyProducts] = useState([]);
+  const [isFilter, setIsFilter] = useState(false);
+
+  const [categoryFilter, setCategoryFilter] = useState({
+    category: "",
+    products: [],
+  });
+
+
+  const [buyFilter, setBuyFilter] = useState({
+    type: "",
+    products: [],
+  });
+
+
+
+
+
+
+  const getProducts = async () => {
+    const options = {
+      method: 'GET',
+      url: 'http://localhost:3000/api/products/v1/allProducts',
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        // console.log(response.data);
+        setProducts(response.data.data.products);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+    console.log(products);
+  }
+
+
+
+  const getCategoryProducts = () => {
+    let categoryProducts = products?.filter((product) => product.category === categoryFilter.category)
+
+    if (categoryProducts) {
+      setCategoryFilter({ ...categoryFilter, products: categoryProducts });
+    }
+
+
+
+  }
+
+  useEffect(() => {
+    console.log(categoryFilter.products);
+  }, [categoryFilter.products])
+
+  useEffect(() => {
+    // alert(categoryFilter.category);
+    if (categoryFilter.category == "Default") {
+      setIsFilter(false);
+    } else {
+      setIsFilter(true);
+      getCategoryProducts();
+    }
+  }, [categoryFilter.category])
+
+
+
+  const getBuyCategoryProducts = ()=>{
+    let categoryBuyProducts;
+    if(buyFilter.type==="BUY"){
+      categoryBuyProducts = products?.filter((product) => product.onRent == false)
+    }else{
+      categoryBuyProducts = products?.filter((product) => product.onRent == true)
+    }
+  
+    if (categoryBuyProducts) {
+      setBuyFilter({ ...buyFilter, products: categoryBuyProducts });
+    }
+  }
+
+  useEffect(() => {
+    console.log(buyFilter.products);
+  }, [buyFilter.products])
+
+
+  useEffect(() => {
+
+    if (buyFilter.type == "All") {
+      setIsFilter(false);
+    } else {
+      setIsFilter(true);
+      getBuyCategoryProducts();
+    }
+  }, [buyFilter.type])
+
+
+  useEffect(() => {
+    let data = JSON.parse(sessionStorage.getItem("current_user"));
+    if (data) {
+      setUser(data);
+      getProducts();
+    }
+  }, [])
 
   return (
     <>
@@ -74,11 +184,11 @@ function Equipments() {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                // value={age}
+                name="category"
                 label="Category"
-                // onChange={handleChange}
+                onChange={(e) => { setCategoryFilter({ ...categoryFilter, [e.target.name]: e.target.value }) }}
               >
-                <MenuItem value={"Tractor"}>Tractor</MenuItem>
+                <MenuItem value={"Default"}>Default</MenuItem>
                 <MenuItem value={"Tool"}>Tool</MenuItem>
                 <MenuItem value={"Fertilizers"}>Fertilizers</MenuItem>
                 <MenuItem value={"Vehicles"}>Vehicles</MenuItem>
@@ -86,15 +196,17 @@ function Equipments() {
               </Select>
             </FormControl>
             <FormControl sx={{ mb: 3 }} fullWidth>
-              <InputLabel id="demo-simple-select-label">Buy/Sell</InputLabel>
+              <InputLabel id="demo-simple-select-label">Buy/Rent</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 // value={age}
+                name="type"
                 label="Brands"
-                // onChange={handleChange}
+                onChange={(e) => { setBuyFilter({ ...buyFilter, [e.target.name]: e.target.value }) }}
               >
-                <MenuItem value={"BUy "}>FOR BUY</MenuItem>
+                <MenuItem value={"ALL"}>ALL</MenuItem>
+                <MenuItem value={"BUY"}>FOR BUY</MenuItem>
                 <MenuItem value={"RENT"}>FOR RENT</MenuItem>
               </Select>
             </FormControl>
@@ -107,7 +219,7 @@ function Equipments() {
                 id="demo-simple-select"
                 // value={age}
                 label="Brands"
-                // onChange={handleChange}
+              // onChange={handleChange}
               >
                 <MenuItem value={"1 to 5 days "}>1 to 5 days</MenuItem>
                 <MenuItem value={"5 to 10 days"}>5 to 10 days</MenuItem>
@@ -123,25 +235,27 @@ function Equipments() {
             container
             rowSpacing={4}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-          >
-            <Grid item xs={4}>
-              <ShowProductCard />
-            </Grid>
-            <Grid item xs={4}>
-              <ShowProductCard />
-            </Grid>
-            <Grid item xs={4}>
-              <ShowProductCard />
-            </Grid>
-            <Grid item xs={4}>
-              <ShowProductCard />
-            </Grid>
-            <Grid item xs={4}>
-              <ShowProductCard />
-            </Grid>
-            <Grid item xs={4}>
-              <ShowProductCard />
-            </Grid>
+          ><>
+              {!isFilter && products?.map((product) => {
+                return <Grid item xs={4}>
+                  <ShowProductCard product={product} />
+                </Grid>
+              })}
+
+
+              {isFilter && categoryFilter.category !== "Default" && categoryFilter.products?.map((product) => {
+                return <Grid item xs={4}>
+                  <ShowProductCard product={product} />
+                </Grid>
+              })}
+
+
+              {isFilter && buyFilter.category !== "ALL" && buyFilter.products?.map((product) => {
+                return <Grid item xs={4}>
+                  <ShowProductCard product={product} />
+                </Grid>
+              })}
+            </>
           </Grid>
         </div>
       </div>

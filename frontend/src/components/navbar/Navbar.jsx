@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './navbar.css'
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import logo from '../../assets/logo.svg';
@@ -17,10 +17,27 @@ const Menu = () => {
   );
 }
 
+
+
 const Navbar = () => {
 
   const [toggleMenu, setToggleMenu] = useState(false); // initial value of toggleMenu is false
   const navigate = useNavigate();
+  const[loggedIn,setLoggedIn]=useState(false);
+
+  const handleLogout = ()=>{
+    sessionStorage.removeItem("current_user");
+    navigate("/");
+  }
+
+  useEffect(()=>{
+    let data = JSON.parse(sessionStorage.getItem("current_user"));
+    if(data){
+      setLoggedIn(false);
+    }else{
+      setLoggedIn (true);
+    }
+  },[])
 
   return (
     <div className="gpt3__navbar">
@@ -32,10 +49,19 @@ const Navbar = () => {
           <Menu />
         </div>
       </div>
+      {!loggedIn && 
       <div className="gpt3__navbar-sign">
-        <p onClick={()=>navigate("/login")}>Sign in</p>
-        <button type="button" onClick={()=>navigate("/signup")}>Sign Up</button>
+      <p onClick={()=>navigate("/login")}></p>
+      <button type="button" onClick={handleLogout}>Logout</button>
+      </div>}
+
+      {loggedIn && 
+      <div className="gpt3__navbar-sign">
+      <p onClick={()=>navigate("/login")}>Sign in</p>
+      <button type="button" onClick={()=>navigate("/signup")}>Sign Up</button>
       </div>
+      }
+      
       <div className="gpt3__navbar-menu">
         {toggleMenu
           ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />

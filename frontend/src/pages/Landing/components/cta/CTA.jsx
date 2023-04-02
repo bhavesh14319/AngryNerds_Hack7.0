@@ -8,7 +8,7 @@ const CTA = () => {
         {/* <p className="gpt3__cta-info__early">
           Request Early Access to Get Started
         </p> */}
-        <p className="gpt3__cta-info__register">
+        <p style={{animationName:  'wipe-in-right',animationDuration: '2s'}} className="gpt3__cta-info__register">
           Register on FarmEase today and experience the convenience and benefits of our rental services, high-quality products, and expert support for yourself.
         </p>
       </div>
