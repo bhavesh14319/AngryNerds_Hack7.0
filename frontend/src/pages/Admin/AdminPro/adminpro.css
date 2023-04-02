@@ -1,0 +1,52 @@
+.farmeasy__adminpro {
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items : center;
+    padding : 2rem;
+}   
+
+.farmeasy__adminpro-img {
+    border-radius : 10px;
+    margin-right : 2rem;
+}
+
+.farmeasy__adminpro-img img{
+    border-radius : 10px;
+    height : 150px;
+    margin: 2rem;
+}
+
+.farmeasy__adminpro-admindata {
+    display : flex;
+    flex-direction : column;
+    gap : 2rem;
+}
+
+.adminpro-container {
+    display : flex;
+    flex-direction : row;
+    gap : 3rem;
+}
+
+.farmeasy__adminpro-topic {
+    min-width : 200px;
+    color: #379237 ;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 30px;
+    font-family: var(--font-family);
+    border-bottom : solid #379237 1px;
+
+}
+
+.farmeasy__adminpro-desc {
+    min-width : 200px;
+    color: #77b73b ;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: var(--font-family);
+    border-bottom : solid #379237 1px;
+
+}
