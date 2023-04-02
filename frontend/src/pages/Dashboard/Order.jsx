@@ -57,11 +57,11 @@ const Orders = () => {
     }
     const pendingOrder = async () => {
         const data = await axios('http://localhost:3000/api/orders/v1/pendingOrder');
-        setPendingOrder(data?.data?.data)
+        setPendingOrder(data.data.data)
     };
     const completedOrder = async () => {
         const data = await axios('http://localhost:3000/api/orders/v1/completedOrder');
-        setcompletedOrder(data?.data?.data)
+        setcompletedOrder(data.data.data)
     }
     useEffect(() => {
         completedOrder();

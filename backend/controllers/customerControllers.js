@@ -14,7 +14,7 @@ const addProduct =async (req,res)=>{
 
     let urls = [];
 
-    const requests = req.files?.map(async (file, index) => {
+    const requests = req.files.map(async (file, index) => {
         const imagePath = path.join(__dirname, `../uploads/image-${req.files[index].originalname}`);
         const data = await uploadImage(imagePath);
         console.log(data);

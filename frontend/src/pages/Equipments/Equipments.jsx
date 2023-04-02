@@ -86,7 +86,7 @@ function Equipments() {
 
 
   const getCategoryProducts = () => {
-    let categoryProducts = products?.filter((product) => product.category === categoryFilter.category)
+    let categoryProducts = products.filter((product) => product.category === categoryFilter.category)
 
     if (categoryProducts) {
       setCategoryFilter({ ...categoryFilter, products: categoryProducts });
@@ -115,9 +115,9 @@ function Equipments() {
   const getBuyCategoryProducts = ()=>{
     let categoryBuyProducts;
     if(buyFilter.type==="BUY"){
-      categoryBuyProducts = products?.filter((product) => product.onRent == false)
+      categoryBuyProducts = products.filter((product) => product.onRent == false)
     }else{
-      categoryBuyProducts = products?.filter((product) => product.onRent == true)
+      categoryBuyProducts = products.filter((product) => product.onRent == true)
     }
   
     if (categoryBuyProducts) {
@@ -236,21 +236,21 @@ function Equipments() {
             rowSpacing={4}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           ><>
-              {!isFilter && products?.map((product) => {
+              {!isFilter && products.map((product) => {
                 return <Grid item xs={4}>
                   <ShowProductCard product={product} />
                 </Grid>
               })}
 
 
-              {isFilter && categoryFilter.category !== "Default" && categoryFilter.products?.map((product) => {
+              {isFilter && categoryFilter.category !== "Default" && categoryFilter.products.map((product) => {
                 return <Grid item xs={4}>
                   <ShowProductCard product={product} />
                 </Grid>
               })}
 
 
-              {isFilter && buyFilter.category !== "ALL" && buyFilter.products?.map((product) => {
+              {isFilter && buyFilter.category !== "ALL" && buyFilter.products.map((product) => {
                 return <Grid item xs={4}>
                   <ShowProductCard product={product} />
                 </Grid>
