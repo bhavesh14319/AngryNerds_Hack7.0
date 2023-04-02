@@ -11,6 +11,7 @@ import Government from "./pages/Schemes/Governmnet";
 import FarmerProfile from "./pages/Help/FarmerProfile/FarmerProfile";
 import SignUp from "./pages/Login/SignUp";
 import Admin from "./pages/Admin/Admin";
+import ProfileFull from "./pages/Admin/Home/ProfileFull/ProfileFull";
 import Orders from "./pages/Dashboard/Order";
 
 const theme = createTheme({
@@ -31,7 +32,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/home" element={<Admin />} />
         <Route path="/order" element={<Orders />} />
+        <Route path="/full" element={<ProfileFull />} />
       
     </Routes>
     </BrowserRouter>
