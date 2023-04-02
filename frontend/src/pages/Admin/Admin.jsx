@@ -16,7 +16,7 @@ export const Admin = () => {
     }
     const getUnverifiedUser = async () => {
         const data = await axios.get('http://localhost:3000/api/admin/v1/getUnverifiedUsers');
-        setUnverifiedUser(data?.data?.data?.users);
+        setUnverifiedUser(data.data.data.users);
     };
     useEffect(() => {
         getUnverifiedUser();

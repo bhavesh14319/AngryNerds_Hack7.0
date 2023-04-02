@@ -20,7 +20,7 @@ const adminSchema = new mongoose.Schema({
         type:[mongoose.Schema.Types.ObjectId]
     },
     sellerRequests:{
-        type:[mongoose.Schema.Types.ObjectId]
+        type:[{}],
     },
 
     ordersQueue:{

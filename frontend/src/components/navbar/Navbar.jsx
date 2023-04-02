@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 
 
 const Menu = () => {
+  const navigate = useNavigate()
   return (
     <>
-      <p><a href="#home">Home</a></p>
-      <p><a href="#wgpt3">What is GPT?</a></p>
-      <p><a href="#features">OpenAI</a></p>
-      <p><a href="#possibility">Case Studies</a></p>
-      <p><a href="#blog">Library</a></p>
+      <p  onClick={()=>navigate("/Home")}><a>Home</a></p>
+      <p  onClick={()=>navigate("/Profile")}><a >Profile</a></p>
+      <p><a href="#possibility">Schemes</a></p>
+      <p onClick={()=>navigate("/addProduct")}><a href="#features">Be A Seller</a></p>
+      {/* <p><a href="#possibility"></a></p>
+      <p><a href="#blog">Library</a></p> */}
     </>
   );
 }

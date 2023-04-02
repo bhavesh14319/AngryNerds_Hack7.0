@@ -11,7 +11,7 @@ export default function ShowProductCard({product}) {
     <Card sx={{ maxWidth: 345, boxShadow: 10, borderRadius: 3 ,paddingTop:0}}>
       <CardMedia
         sx={{ height: 240 }}
-        image= {product?.Images? product.Images[0] : "" }
+        image= {product.Images? product.Images[0] : "" }
         title="Product Image"
       />
       <CardContent sx={{ backgroundColor: "#d8f5de" }}>

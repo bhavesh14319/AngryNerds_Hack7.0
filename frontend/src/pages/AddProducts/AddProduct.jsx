@@ -10,11 +10,126 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import React from "react";
+import React,{useEffect,useState} from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { inputLabelClasses } from "@mui/material/InputLabel";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 function AddProduct() {
+    const navigate=useNavigate();
+    const [uploadedImages, setUploadedImages] = React.useState([]);
+    const [imageLimit, setImageLimit] = React.useState(false);
+    const [user, setUser] = useState();
+    const [state,setState] = useState({
+        "productName":"",
+        "category":"",
+        "price":"",
+      });
+
+    const handleChange = (e) => {
+        let name = e.target.name;
+        let value = e.target.value; 
+        setState({...state,[name]:value});
+      }
+
+
+
+
+      const handleUploadImages = (files) => {
+        const uploaded = [...uploadedImages];
+        let limitExceeded = false;
+    
+        files.some((file) => {
+          if (uploaded.findIndex((f) => f.name === file.name) === -1) {
+            uploaded.push(file);
+            if (uploaded.length === 5) {
+              setImageLimit(true);
+            }
+            if (uploaded.length > 5) {
+    
+              setImageLimit(false);
+              limitExceeded = true;
+              return true;
+            }
+          }
+        });
+    
+        if (!limitExceeded) {
+          setUploadedImages(uploaded);
+        }
+      };
+
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('productName',state.productName);
+        formData.append('category',state.category);
+        formData.append('price',state.price);
+        formData.append('owner_id',user._id);
+        formData.append('image',uploadedImages);
+        const options = {
+          method: 'POST',
+          url: 'http://localhost:3000/api/user/v1/addProduct',
+          data: formData
+        };
+    
+        axios
+        .request(options)
+        .then(function (response) {
+            console.log(response.data);
+            Swal.fire({
+                title: 'Done!',
+                text: 'Product Added Successfully!',
+                icon: 'succcess',
+                confirmButtonText: 'Cool'
+              })
+            // sessionStorage.setItem("current_user", response.data.data.user);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+
+      }
+    useEffect(()=>{
+        let data = JSON.parse(sessionStorage.getItem("current_user"));
+        if (data) {
+          setUser(data);
+        }
+
+    },[])
+
+
+
+    useEffect(()=>{
+        console.log(user)
+        if(user?.isVerified==false){
+        
+            const options = {
+                method: 'POST',
+                url: 'http://localhost:3000/api/user/v1/sellerRequest',
+                data: {"customer_id":user._id}
+              };
+          
+            axios
+        .request(options)
+        .then(function (response) {
+            console.log(response.data);
+            Swal.fire({
+                title: 'seller Request Submitted',
+                text: 'Admin will verify you to become a seller',
+                icon: 'Note',
+                confirmButtonText: 'Cool'
+              })
+            // sessionStorage.setItem("current_user", response.data.data.user);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+
+        }
+    },[user])
+
     return (
         <div>
             <Navbar />
@@ -68,7 +183,12 @@ function AddProduct() {
                             }}
                         >
                             Upload Product Image
-                            <input hidden accept="image/*" multiple type="file" />
+                            <input onChange={(e) => {
+                        const chosenImages = Array.prototype.slice.call(
+                          e.target.files
+                        );
+                        handleUploadImages(chosenImages);
+                      }} hidden accept="image/*" multiple type="file" />
                         </Button>
                     </Box>
                 </div>
@@ -82,12 +202,13 @@ function AddProduct() {
                         <Grid item xs={12}>
                             <TextField
                                 autoComplete="product-name"
-                                name="product-name"
                                 required
                                 fullWidth
+                                name="productName"
                                 id="product-name"
                                 label="Product Name"
                                 autoFocus
+                                onChange={handleChange}
                                 InputLabelProps={{
                                     sx: {
                                         // set the color of the label when not shrinked
@@ -115,8 +236,9 @@ function AddProduct() {
                                 fullWidth
                                 id="Price"
                                 label="Product Price (₹)"
-                                name="Price"
+                                name="price"
                                 autoComplete="Price"
+                                onChange={handleChange}
                                 InputLabelProps={{
                                     sx: {
                                         // set the color of the label when not shrinked
@@ -146,7 +268,8 @@ function AddProduct() {
                                     id="demo-simple-select"
                                     // value={age}
                                     label="Category"
-                                    // onChange={handleChange}
+                                    name="category"
+                                    onChange={(e)=>{setState({...state,[e.target.name]:e.target.value})}}
                                     InputLabelProps={{
                                         sx: {
                                             // set the color of the label when not shrinked
@@ -181,11 +304,11 @@ function AddProduct() {
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    // value={age}
+                                    name="onRent"
                                     label="Brands"
-                                // onChange={handleChange}
+                                    onChange={(e)=>{setState({...state,[e.target.name]:e.target.value==="BUY"?false:true})}}
                                 >
-                                    <MenuItem value={"BUy "}>FOR BUY</MenuItem>
+                                    <MenuItem value={"BUY"}>FOR BUY</MenuItem>
                                     <MenuItem value={"RENT"}>FOR RENT</MenuItem>
                                 </Select>
                             </FormControl>
@@ -254,7 +377,7 @@ function AddProduct() {
                             </FormControl>
 
                         </Grid>
-                        <Button variant="contained" fullWidth sx={{
+                        <Button onClick={handleSubmit} variant="contained" fullWidth sx={{
                             marginTop: '20px', marginLeft: "20px", backgroundColor: "#0A410A", '&:hover': {
                                 backgroundColor: "#379237"
                             }

@@ -7,11 +7,13 @@ import { green } from "@mui/material/colors";
 import Landing from "../src/pages/Landing/Landing";
 // import { ChakraProvider } from "@chakra-ui/react";
 import Government from "./pages/Schemes/Governmnet";
-import FarmerProfile from "./pages/Help/FarmerProfile/FarmerProfile";
+
 import SignUp from "./pages/Login/SignUp";
 import Admin from "./pages/Admin/Admin";
 import Orders from "./pages/Dashboard/Order";
 import Equipments from "./pages/Equipments/Equipments";
+import FarmerProfile from"./pages/Help/FarmerProfile/FarmerProfile"
+import AddProducts from "./pages/AddProducts/AddProduct"
 
 const theme = createTheme({
   palette: {
@@ -33,6 +35,8 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/order" element={<Orders />} />
         <Route path="/home" element={<Equipments />} />
+        <Route path="/profile" element={<FarmerProfile />} />
+        <Route path="/addProduct" element = {<AddProducts/>}/>
       
     </Routes>
     </BrowserRouter>

@@ -40,7 +40,7 @@ const ProfileFull = () => {
                 <p>Unverified Users</p>
             </div>
             <div className="farmeasy__profiles">
-                {(new_list.map((value) => {
+                {(new_list?.map((value) => {
                     return <Card name={value.name} imgSrc={value.imgSrc} />
                 }))}
             </div>

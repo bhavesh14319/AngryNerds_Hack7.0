@@ -74,7 +74,7 @@ function Equipments() {
       .request(options)
       .then(function (response) {
         // console.log(response.data);
-        setProducts(response.data.data.products);
+        setProducts(response?.data?.data?.products);
       })
       .catch(function (error) {
         console.error(error);
@@ -86,7 +86,7 @@ function Equipments() {
 
 
   const getCategoryProducts = () => {
-    let categoryProducts = products?.filter((product) => product.category === categoryFilter.category)
+    let categoryProducts = products?.filter((product) => product?.category === categoryFilter?.category)
 
     if (categoryProducts) {
       setCategoryFilter({ ...categoryFilter, products: categoryProducts });
@@ -97,7 +97,7 @@ function Equipments() {
   }
 
   useEffect(() => {
-    console.log(categoryFilter.products);
+    console.log(categoryFilter?.products);
   }, [categoryFilter.products])
 
   useEffect(() => {
@@ -115,9 +115,9 @@ function Equipments() {
   const getBuyCategoryProducts = ()=>{
     let categoryBuyProducts;
     if(buyFilter.type==="BUY"){
-      categoryBuyProducts = products?.filter((product) => product.onRent == false)
+      categoryBuyProducts = products?.filter((product) => product?.onRent == false)
     }else{
-      categoryBuyProducts = products?.filter((product) => product.onRent == true)
+      categoryBuyProducts = products?.filter((product) => product?.onRent == true)
     }
   
     if (categoryBuyProducts) {
@@ -243,14 +243,14 @@ function Equipments() {
               })}
 
 
-              {isFilter && categoryFilter.category !== "Default" && categoryFilter.products?.map((product) => {
+              {isFilter && categoryFilter.category !== "Default" && categoryFilter?.products?.map((product) => {
                 return <Grid item xs={4}>
                   <ShowProductCard product={product} />
                 </Grid>
               })}
 
 
-              {isFilter && buyFilter.category !== "ALL" && buyFilter.products?.map((product) => {
+              {isFilter && buyFilter.category !== "ALL" && buyFilter?.products?.map((product) => {
                 return <Grid item xs={4}>
                   <ShowProductCard product={product} />
                 </Grid>

@@ -57,11 +57,11 @@ const Orders = () => {
     }
     const pendingOrder = async () => {
         const data = await axios('http://localhost:3000/api/orders/v1/pendingOrder');
-        setPendingOrder(data?.data?.data)
+        setPendingOrder(data.data.data)
     };
     const completedOrder = async () => {
         const data = await axios('http://localhost:3000/api/orders/v1/completedOrder');
-        setcompletedOrder(data?.data?.data)
+        setcompletedOrder(data.data.data)
     }
     useEffect(() => {
         completedOrder();
@@ -80,14 +80,14 @@ const Orders = () => {
             <div className="farmeasy__orders-order__containers">
                 {(toggle) &&
                     (
-                        pendingOrders.map((value) => {
+                        pendingOrders?.map((value) => {
                             return (
                                 <Ordercard status="Pending Orders" orderlist={value} />
                             )
                         }))}
                 {(!toggle) &&
                     (
-                        completedOrders.map((value) => {
+                        completedOrders?.map((value) => {
                             return (
                                 <Ordercard status="Completed Orders" orderlist={value} />
                             )

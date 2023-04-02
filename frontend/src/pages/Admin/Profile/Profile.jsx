@@ -43,7 +43,7 @@ const Profile = (props) => {
             <div className="farmeasy__profiles">
 
                 {
-                    data.map((data) => {
+                    data?.map((data) => {
                         return <Card name={data.first_name} imgSrc={data.image} />
                     })
                 }
