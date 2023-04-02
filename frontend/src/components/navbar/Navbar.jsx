@@ -10,9 +10,10 @@ const Menu = () => {
   return (
     <>
       <p  onClick={()=>navigate("/Home")}><a>Home</a></p>
-      {/* <p  onClick={()=>navigate("/Profile")}><a >Profile</a></p> */}
+      <p  onClick={()=>navigate("/profile")}><a >Profile</a></p>
       <p onClick={()=>navigate("/schemes")}><a>Schemes</a></p>
-      <p onClick={()=>navigate("/addProduct")}><a href="#features">Be A Seller</a></p>
+      <p onClick={()=>navigate("/orders")}><a >Orders</a></p>
+      <p onClick={()=>navigate("/addProduct")}><a >Be A Seller</a></p>
       {/* <p><a href="#possibility"></a></p>
       <p><a href="#blog">Library</a></p> */}
     </>

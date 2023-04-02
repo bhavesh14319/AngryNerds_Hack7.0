@@ -15,6 +15,7 @@ import Orders from "./pages/Dashboard/Order";
 import Equipments from "./pages/Equipments/Equipments";
 import FarmerProfile from"./pages/Help/FarmerProfile/FarmerProfile"
 import AddProducts from "./pages/AddProducts/AddProduct"
+import Navbar from "./components/navbar/Navbar";
 
 const theme = createTheme({
   palette: {
@@ -34,13 +35,15 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/home" element={<Admin />} />
-        <Route path="/order" element={<Orders />} />
+        <Route path="/admin/home" element={<Admin />} />
+        <Route path="/orders" element={<><Navbar/><Orders /></>} />
         <Route path="/home" element={<Equipments />} />
         <Route path="/profile" element={<FarmerProfile />} />
         <Route path="/addProduct" element = {<AddProducts/>}/>
         <Route path="/schemes" element = {<Government/>}/>
         <Route path="/full" element={<ProfileFull />} />
+        <Route path="/profile" element={<FarmerProfile />} />
+        
       
     </Routes>
     </BrowserRouter>

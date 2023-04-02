@@ -44,8 +44,7 @@ function Equipments() {
 
   const [products, setProducts] = useState();
 
-  const [rentProducts, setRentProducts] = useState([]);
-  const [buyProducts, setBuyProducts] = useState([]);
+
   const [isFilter, setIsFilter] = useState(false);
 
   const [categoryFilter, setCategoryFilter] = useState({
@@ -141,6 +140,11 @@ function Equipments() {
   }, [buyFilter.type])
 
 
+  useEffect(()=>{
+    if(isFilter==false){
+      setCategoryFilter({...categoryFilter,category:"Default"})
+    }
+  },[isFilter])
   useEffect(() => {
     let data = JSON.parse(sessionStorage.getItem("current_user"));
     if (data) {
@@ -236,7 +240,7 @@ function Equipments() {
             rowSpacing={4}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           ><>
-              {!isFilter && products.map((product) => {
+              {!isFilter &&  products?.map((product) => {
                 return <Grid item xs={4}>
                   <ShowProductCard product={product} />
                 </Grid>

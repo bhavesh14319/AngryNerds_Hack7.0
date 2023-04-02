@@ -41,26 +41,30 @@ const Profile = (props) => {
         // getSellerRequests();
     }, []);
     return (
+        <>
         <div className="farmeasy__profile">
             <div className="farmeasy__profile-unverified">
                 <div className='farmeasy__profile-box'></div>
-                <p>Unverified Users</p>
-            </div>
-            <div className="farmeasy__profiles">
+                     <p>Unverified Users</p>
+                 </div>
+                    <div className="farmeasy__profiles">
+                            <>
+                            {
+                                data?.map((data) => {
+                                    return <Card name={data.first_name} imgSrc={data.image} />
+                                })
+                            }
+                            </>
+                        </div>
 
-                {
-                    data?.map((data) => {
-                        return <Card name={data.first_name} imgSrc={data.image} />
-                    })
-                }
-
+                        
+                        <div className="farmeasy__profile-viewall">
+                            <button>
+                                <p>view All</p>
+                            </button>
+                        </div>
                 </div>
-                <div className="farmeasy__profile-viewall">
-                    <button>
-                        <p>view All</p>
-                    </button>
-                </div>
-            </div>
+        
             <div className="farmeasy__profile">
                 <div className="farmeasy__profile-unverified">
                     <div className='farmeasy__profile-box'></div>

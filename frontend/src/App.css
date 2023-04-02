@@ -1,0 +1,132 @@
+@keyframes wipe-in-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:wipe:right"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-right both;
+}
+
+@-webkit-keyframes flip-2-hor-top-1 {
+0% {
+  -webkit-transform: translateY(0) rotateX(0);
+  transform: translateY(0) rotateX(0);
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+100% {
+  -webkit-transform: translateY(-100%) rotateX(-180deg);
+  transform: translateY(-100%) rotateX(-180deg);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+}
+@keyframes flip-2-hor-top-1 {
+0% {
+  -webkit-transform: translateY(0) rotateX(0);
+  transform: translateY(0) rotateX(0);
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+100% {
+  -webkit-transform: translateY(-100%) rotateX(-180deg);
+  transform: translateY(-100%) rotateX(-180deg);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+}
+
+.flip-2-hor-top-1 {
+-webkit-animation: flip-2-hor-top-1 0.5s
+  cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+animation: flip-2-hor-top-1 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+
+
+@keyframes square-in-center {
+  from {
+    clip-path: inset(100% 100% 100% 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:square:center"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) square-in-center both;
+}
+
+
+
+@keyframes square-in-bottom-right {
+  from {
+    clip-path: inset(0 100% 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:square:bottom-right"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) square-in-bottom-right both;
+}
+
+
+
+@keyframes circle-in-top-right {
+  from {
+    clip-path: circle(0%);
+  }
+  to {
+    clip-path: circle(150% at top right);
+  }
+}
+
+[transition-style="in:circle:top-right"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) circle-in-top-right both;
+}
+
+
+
+@keyframes polygon-in-opposing-corners {
+  from {
+    clip-path: polygon(0 0, 50% 50%, 100% 100%, 50% 50%);
+  }
+  to {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+}
+
+[transition-style="in:polygon:opposing-corners"] {
+  animation: 1.5s cubic-bezier(.25, 1, .30, 1) polygon-in-opposing-corners both;
+}
+
+@keyframes square-in-center {
+  from {
+    clip-path: inset(100% 100% 100% 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:square:center"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) square-in-center both;
+}
+
+.MuiOutlinedInput-notchedOutline{
+  border-color: #53af5b !important;
+}
+
+.MuiFilledInput-root {
+ border-bottom: 1px solid #53af5b !important;
+}
+
+.MuiInput-root {
+ border-bottom: 1px solid #53af5b !important;
+}

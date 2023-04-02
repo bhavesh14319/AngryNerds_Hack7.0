@@ -16,6 +16,7 @@ import { inputLabelClasses } from "@mui/material/InputLabel";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+
 function AddProduct() {
     const navigate=useNavigate();
     const [uploadedImages, setUploadedImages] = React.useState([]);
@@ -100,33 +101,38 @@ function AddProduct() {
     },[])
 
 
+    const submitSellerRequest = async()=>{
+        
+        const options = {
+            method: 'POST',
+            url: 'http://localhost:3000/api/user/v1/sellerRequest',
+            data: {"customer_id":user._id}
+          };
+      
+        axios
+    .request(options)
+    .then(function (response) {
+        console.log(response.data);
+        Swal.fire({
+            title: 'seller Request Submitted',
+            text: 'Admin will verify you to become a seller',
+            icon: 'Note',
+            confirmButtonText: 'Cool'
+          })
+        // sessionStorage.setItem("current_user", response.data.data.user);
+    })
+    .catch(function (error) {
+        console.error(error);
+    });
+
+    }
+
+
 
     useEffect(()=>{
         console.log(user)
         if(user?.isVerified==false){
-        
-            const options = {
-                method: 'POST',
-                url: 'http://localhost:3000/api/user/v1/sellerRequest',
-                data: {"customer_id":user._id}
-              };
-          
-            axios
-        .request(options)
-        .then(function (response) {
-            console.log(response.data);
-            Swal.fire({
-                title: 'seller Request Submitted',
-                text: 'Admin will verify you to become a seller',
-                icon: 'Note',
-                confirmButtonText: 'Cool'
-              })
-            // sessionStorage.setItem("current_user", response.data.data.user);
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-
+            
         }
     },[user])
 
@@ -170,7 +176,7 @@ function AddProduct() {
                             sx={{ width: 156, height: 156, mb: 2 }}
                         />
                         <Typography varinat="h2" fontSize={30} sx={{ mb: 3 }}>
-                            Product Name
+                            Product Name 
                         </Typography>
                         <Button
                             variant="contained"
@@ -196,7 +202,10 @@ function AddProduct() {
                     className="profile_details"
                     style={{ flex: 3, padding: "20px 50px " }}
                 >
-                    <Typography variant="h4" style={{ color: "#379237" }}>ADD Product</Typography>
+                    <div style={{display:"flex",width:"100%",justifyContent:"space-between"}}>
+                    <Typography variant="h4" style={{ color: "#379237" }}>ADD Product </Typography>
+                     {user?.isVerified==false &&   <button style={{padding:"15px",backgroundColor:"#0A410A",color:"white",borderRadius:"10px"}} onClick={()=>submitSellerRequest}>Make Seller Request</button>}
+                    </div>
                     <Typography variant="h6" style={{ color: "#379237" }}>Add Product Details</Typography>
                     <Grid container spacing={2} sx={{ mt: 5 }}>
                         <Grid item xs={12}>

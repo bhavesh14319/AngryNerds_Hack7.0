@@ -68,7 +68,7 @@ const Orders = () => {
         pendingOrder();
     }, []);
     return (
-        <div className="farmeasy__orders">
+        <div className="farmeasy__orders"style={{marginTop:"20px"}}>
             <div className="farmeasy__orders-option__container">
                 <div className="farmeasy__orders-option__container-pending">
                     <button onClick={changeState}>Pending</button>
