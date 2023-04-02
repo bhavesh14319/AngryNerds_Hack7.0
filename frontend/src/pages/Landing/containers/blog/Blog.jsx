@@ -36,14 +36,14 @@ const arti_desc = "We understand that as a farmer, you want to ensure that your 
 const Blog = () => {
   return (
     <div className="gpt3__blog  section__padding" id = "blog">
-      <div className="gpt3__blog-title gradient__text ">
+      <div className="gpt3__blog-title gradient__text " style={{animationName:  'wipe-in-right',animationDuration: '2s'}}>
         <p>Read Exclusive Blogs on Farming </p>
       </div>
-      <div className="gpt3__blog-article__container">
+      <div className="gpt3__blog-article__container" style={{animationName:  'polygon-in-opposing-corners',animationDuration: '2s'}}>
         <div className="gpt3__blog-article__container-1">
-          <Article imgSrc = {blog01} desc = {arti_desc} date = "26 Sep, 2021" imgLink = {'https://mahadhan.co.in/7-tips-get-best-wheat-produce/'} title = "5 Mistakes Farmers Should Avoid While Applying Fertilisers"/>
+          <Article  imgSrc = {blog01} desc = {arti_desc} date = "26 Sep, 2021" imgLink = {'https://mahadhan.co.in/7-tips-get-best-wheat-produce/'} title = "5 Mistakes Farmers Should Avoid While Applying Fertilisers"/>
         </div>
-        <div className="gpt3__blog-article__container-2">
+        <div className="gpt3__blog-article__container-2" style={{animationName:  'polygon-in-opposing-corners',animationDuration: '2s'}}>
           {blogData.map((item, index) => (
             <Article imgSrc={item.img} date={item.date} title={item.title} key={item.img + index} />
           ))}

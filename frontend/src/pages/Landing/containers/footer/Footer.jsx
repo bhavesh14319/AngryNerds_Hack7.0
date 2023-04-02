@@ -21,7 +21,7 @@ const footerData = [
 const Footer = () => {
   return (
     <div className="gpt3__footer" id = "footer">
-      <div className="gpt3__footer-title gradient__text">
+      <div className="gpt3__footer-title gradient__text" style={{animationName:  'square-in-bottom-right',animationDuration: '2s'}}>
         <p>Do you want to step in to the future before others</p>
       </div>
       <div className="gpt3__footer-early">

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./navbar.css";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/images/logo1.png";
 import { Link } from "@mui/material";
+import AgricultureIcon from '@mui/icons-material/Agriculture';
 
 const Menu = () => {
   // console.log(window.location.pathname)
@@ -12,17 +13,17 @@ const Menu = () => {
         <a href="#home">Home</a>
       </p>
       <p>
-        <a href="#wgpt3">What is GPT?</a>
+        <a href="#wgpt3">Equipments</a>
       </p>
       <p>
-        <a href="#features">OpenAI</a>
+        <a href="#features">Government Schemes</a>
       </p>
       <p>
         <a href="#possibility">Case Studies</a>
       </p>
-      <p>
+      {/* <p>
         <a href="#blog">Library</a>
-      </p>
+      </p> */}
     </>
   );
 };
@@ -34,7 +35,8 @@ const Navbar = () => {
     <div className="gpt3__navbar">
       <div className="gpt3__navbar-links">
         <div className="gpt3__navbar-links_logo">
-          <img src={logo} alt="logo"></img>
+          {/* <img style={{width:'100px'}} src={logo} alt="logo"></img> */}
+          <AgricultureIcon color='#379237' sx={{height:'60px',width:'60px',color:'#379237'}}/>
         </div>
         <div className="gpt3__navbar-links_contanier ">
           <Menu />

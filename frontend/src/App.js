@@ -31,7 +31,6 @@ function App() {
             <Route path="/landing" element={<Landing />} />
             <Route path="/governmnet" element={<Government />} />
             <Route path="/Profile" element={<FarmerProfile />} />
-            <Route path="/kyc" element={<FarmerProfile />} />
           </Routes>
         </BrowserRouter>
       // </ChakraProvider>

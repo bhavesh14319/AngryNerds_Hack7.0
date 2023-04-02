@@ -36,7 +36,8 @@ function FarmerProfile() {
             border: "1px solid grey",
             borderRadius: "1rem",
             marginTop: "40px ",
-            height:"400px"
+            height:"400px",
+            backgroundColor:"#D8F5DE"
           }}
         >
           <Box
@@ -56,7 +57,7 @@ function FarmerProfile() {
             <Typography varinat="h2" fontSize={30} sx={{ mb: 3 }}>
               Anika Visser
             </Typography>
-            <Button variant="contained" component="label" fullWidth>
+            <Button variant="contained" component="label" sx={{backgroundColor:"#0A410A"}} fullWidth>
               Upload Profile Image
               <input hidden accept="image/*" multiple type="file" />
             </Button>

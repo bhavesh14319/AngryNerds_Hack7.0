@@ -5,13 +5,17 @@ import ai from '../../assets/ai.png'
 
 const Header = () => {
   return (
-    <div className="gpt3__header section__padding " id="home">
+    <div className="gpt3__header section__padding" id="home">
 
-      <div className="gpt3__header-content">
-        <h1 className="gpt3__header-content__text ">
+      <div className="gpt3__header-content" >
+        <h1 className="gpt3__header-content__text " style={{animationName:  'wipe-in-right' 
+,
+  animationDuration: '2s'}}>
           Farm Easy is the one-stop solution for all your farming needs
         </h1>
-        <p>
+        <p style={{animationName:  'wipe-in-right' 
+,
+  animationDuration: '2s'}}>
           The go-to website for renting farm tools and buying/selling farming products.
         </p>
         <div className="gpt3__header-content__input">
@@ -20,13 +24,13 @@ const Header = () => {
         </div>
 
         <div className="gpt3__header-content__people">
-          <img src={people} alt='people'></img>
+          <img src={people} alt='people' ></img>
           <p>More than 1000 farmers are linked with us</p>
         </div>
       </div>
 
       <div className="gpt3__header-image">
-        <img src={ai} alt='ai image'></img>
+        <img src={ai} alt='ai image' style={{animationName:  'square-in-center',animationDuration: '2s'}}></img>
       </div>
     </div>
   )
