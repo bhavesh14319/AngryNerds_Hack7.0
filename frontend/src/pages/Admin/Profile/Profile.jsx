@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import Card from '../Card/Card'
 import profilepic from './download.png'
 import './profile.css'
-import { Avatar } from '@mui/material';
-
+import { Link } from 'react-router-dom';
+import ProfileFull from '../Home/ProfileFull/ProfileFull';
 
 let count = 4;
 
@@ -27,6 +28,7 @@ const new_list = [
 ]
 
 const Profile = (props) => {
+
     const { data } = props;
     const [view, setView] = useState(false);
 
@@ -34,6 +36,10 @@ const Profile = (props) => {
         e.preventDefault();
         setView(true);
     }
+    // const getSellerRequests = ()
+    useEffect(() => {
+        // getSellerRequests();
+    }, []);
     return (
         <div className="farmeasy__profile">
             <div className="farmeasy__profile-unverified">
@@ -48,13 +54,34 @@ const Profile = (props) => {
                     })
                 }
 
+                </div>
+                <div className="farmeasy__profile-viewall">
+                    <button>
+                        <p>view All</p>
+                    </button>
+                </div>
             </div>
-            <div className="farmeasy__profile-viewall">
-                <button>
-                    <p>view All</p>
-                </button>
+            <div className="farmeasy__profile">
+                <div className="farmeasy__profile-unverified">
+                    <div className='farmeasy__profile-box'></div>
+                    <p>Seller Request</p>
+                </div>
+                <div className="farmeasy__profiles">
+
+                    <Card name={new_list[0].name} imgSrc={new_list[0].imgSrc} />
+                    <Card name={new_list[1].name} imgSrc={new_list[1].imgSrc} />
+                    <Card name={new_list[2].name} imgSrc={new_list[2].imgSrc} />
+
+                </div>
+                <div className="farmeasy__profile-viewall">
+                    <Link to={'/full'} >
+                        <button>
+                            <p>view All</p>
+                        </button>
+                    </Link>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

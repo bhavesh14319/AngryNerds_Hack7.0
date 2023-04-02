@@ -236,7 +236,7 @@ function Equipments() {
             rowSpacing={4}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           ><>
-              {!isFilter && products?.map((product) => {
+              {!isFilter && products.map((product) => {
                 return <Grid item xs={4}>
                   <ShowProductCard product={product} />
                 </Grid>
