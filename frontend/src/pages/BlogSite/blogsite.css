@@ -1,0 +1,46 @@
+.farmeasy__blogsite {
+    box-sizing : border-box;
+    display : flex;
+    flex-direction : column;
+    justify-content: flex-start;
+    background : hsl(132, 59%, 90%) ;
+    padding : 3rem 4rem;  
+    gap : 1rem; 
+    margin : 3rem 4rem;
+    border-radius : 10px;
+}
+
+.farmeasy__blogsite-topic h1{
+    color: #379237 ;
+    font-weight: 800;
+    font-size: 30px;
+    font-family: var(--font-family);
+    display: flex;
+    align-items: flex-start;
+}
+
+.farmeasy__blogsite-date p{
+    color : #0a410a;
+    font-size : 1rem;
+    font-family : var(--font-family);
+    font-weight : 500;
+}
+
+.farmeasy__blogsite-content p{
+    color: #73b537;
+    font-size: 1rem;
+    line-height: 30px;
+    font-family: var(--font-family);
+    font-weight : 600;
+}
+
+.farmeasy__blogsite-img {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.farmeasy__blogsite-img img {
+    height : 240px;
+    border-radius : 10px;
+}
