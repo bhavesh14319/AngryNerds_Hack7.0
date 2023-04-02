@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Card from '../Card/Card'
 import profilepic from './download.png'
 import './profile.css'
+import { Avatar } from '@mui/material';
 
 
 let count = 4;
@@ -25,8 +26,8 @@ const new_list = [
     }
 ]
 
-const Profile = () => {
-
+const Profile = (props) => {
+    const { data } = props;
     const [view, setView] = useState(false);
 
     const viewchange = (e) => {
@@ -41,14 +42,16 @@ const Profile = () => {
             </div>
             <div className="farmeasy__profiles">
 
-                <Card name={new_list[0].name} imgSrc={new_list[0].imgSrc} />
-                <Card name={new_list[1].name} imgSrc={new_list[1].imgSrc} />
-                <Card name={new_list[2].name} imgSrc={new_list[2].imgSrc} />
+                {
+                    data.map((data) => {
+                        return <Card name={data.first_name} imgSrc={data.image} />
+                    })
+                }
 
             </div>
             <div className="farmeasy__profile-viewall">
                 <button>
-                    <p>view All >></p>
+                    <p>view All</p>
                 </button>
             </div>
         </div>
