@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 export default function ShowProductCard() {
   return (
-    <Card sx={{ maxWidth: 345, boxShadow: 10, borderRadius: 3 }}>
+    <Card sx={{ maxWidth: 345, boxShadow: 10, borderRadius: 3 ,animationName:  'square-in-center',animationDuration: '2s' }}>
       <CardMedia
         sx={{ height: 240 }}
         image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR7yC1wjNCpIJtuu7vCkKsrZD8Bd4x-BvtojMKCnKvlg&usqp=CAU&ec=48665699"
