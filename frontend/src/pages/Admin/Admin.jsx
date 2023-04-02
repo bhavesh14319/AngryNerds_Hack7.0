@@ -11,12 +11,13 @@ import './admin.css'
 export const Admin = () => {
 
     const [currtab, setCurrtab] = useState(1);
-    const [unverifiedUser, setUnverifiedUser] = useState();
+    const [unverifiedUser, setUnverifiedUser] = useState([]);
     const toggle = () => {
         setCurrtab()
     }
     const getUnverifiedUser = async () => {
         const data = await axios.get('http://localhost:3000/api/admin/v1/getUnverifiedUsers');
+        setUnverifiedUser(data?.data?.data?.users);
     };
     useEffect(() => {
         getUnverifiedUser();
@@ -36,9 +37,9 @@ export const Admin = () => {
                 </div>
 
                 <div className="farmeasy__admin-container">
-                    {((currtab === 1) && <Profile />)}
-                    {((currtab === 2) && <AdminPro />)}
-                    
+                    {((currtab === 1) && <Profile data={unverifiedUser} />)}
+                    {((currtab === 2) && <Home />)}
+
                 </div>
 
 
