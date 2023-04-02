@@ -7,7 +7,7 @@ const path = require('path');
 const { uploadImage } = require('../utils/uploadImage');
 
 const addProduct =async (req,res)=>{
-    const {productName,category,price,onRent,owner_id,isVerified}=req.body;
+    const {productName,category,price,onRent,owner_id}=req.body;
 
 
     // upload images to cloudinary and get links and add it in array

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,122 +12,163 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useNavigate} from "react-router-dom"
+import { create, Provider } from '@mui/material/styles';
+import { useNavigate } from "react-router-dom"
+import { inputLabelClasses } from "@mui/material/InputLabel";
+import axios from "axios";
 
-function Copyright(props) {
-    const navigate = useNavigate();
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="#">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
-const theme = createTheme();
+
 
 export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+  const navigate = useNavigate();
+  const [aadhar,setAadhar]=useState("");
+  const [password,setPassword]=useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let body ={
+      username:aadhar,
+      password:password
+    }
+
+    const options = {
+      method: 'POST',
+      url: 'http://localhost:3000/api/user/v1/auth/login',
+      data: body
+    };
+
+    axios
+    .request(options)
+    .then(function (response) {
+        console.log(response.data);
+        sessionStorage.setItem("current_user", JSON.stringify(response.data.data.user));
+        navigate("/home")
+    })
+    .catch(function (error) {
+        console.error(error);
     });
+
   };
 
   return (
-    <div style={{display:"flex", width:"100%",height:"100%",alignItems:"center",justifyContent:"center"}}>
-    <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-        {/* <CssBaseline /> */}
-        {/* <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
+    <div style={{ display: "flex", width: "100%", height: "100vh", alignItems: "center", justifyContent: "center" }}>
+      {/* <Provider ={}> */}
+      {/* <Grid container component="main" sx={{display:'flex',justifyContent:'center',alignItems:'center',borderRadius:"10px"}}> */}
+      <Grid item xs={10} sm={8} md={5} component={Paper} elevation={6} sx={{ maxWidth: "60vh", backgroundColor: "#d8f5de" }}>
+        <Box
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            my: 8,
+            mx: 4,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            borderRadius: "10px"
+
           }}
-        /> */}
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square >
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5" >
-              Sign in
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="Aadhar Number"
-                label="Aadhar Number"
-                name="Aadhar Number"
-                autoComplete="Aadhar Number"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-              color='secondary'
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 , }}
-              >
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+        >
+          <Avatar sx={{ m: 1, bgcolor: "#379237" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5" sx={{ fontWeight: "600", fontSize: "35px", color: "#379237" }} >
+            Sign in
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="Aadhar Number"
+              label="Aadhar Number"
+              name="Aadhar Number"
+              autoComplete="Aadhar Number"
+              value={aadhar}
+              onChange={(e)=>setAadhar(e.target.value)}
+              autoFocus
+              InputLabelProps={{
+                sx: {
+                  // set the color of the label when not shrinked
+                  color: "#0a410a",
+                  [`&.${inputLabelClasses.shrink}`]: {
+                    // set the color of the label when shrinked (usually when the TextField is focused)
+                    color: "#0a410a"
+                  }
+                }
+              }}
+              sx={{
+                 input: { color: ' #0a410a' } , "& .MuiOutlinedInput-root.Mui-focused": {
+                  "& > fieldset": {
+                    borderColor: "#379237"
+                  }
+                },
+                "& .MuiInputLabel-root": {color: 'green'},
+                "& .MuiFilledInput-input": {color:"#379237"}
+              }}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+              InputLabelProps={{
+                sx: {
+                  // set the color of the label when not shrinked
+                  color: "#0a410a",
+                  [`&.${inputLabelClasses.shrink}`]: {
+                    // set the color of the label when shrinked (usually when the TextField is focused)
+                    color: "#0a410a"
+                  }
+                }
+              }}
+              sx={{
+                input: { color: ' #0a410a' } , "& .MuiOutlinedInput-root.Mui-focused": {
+                  "& > fieldset": {
+                    borderColor: "#379237"
+                  }
+                },
+                "& .MuiInputLabel-root": {color: 'green'},
+                "& .MuiFilledInput-input": {color:"#379237"}
+              }}
+            />
+    
+            <Button
+              // color='secondary'
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{
+                mt: 3, mb: 2, background: "#0a410a", '&:hover': {
+                  backgroundColor: "#379237",
+                },
+              }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link  variant="body2" sx={{ color: "#717171", textDecoration: "none" }}>
+                  Forgot password?
+                </Link>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
-            </Box>
+              <Grid item>
+                <Link onClick={()=>navigate("/signup")} variant="body2" sx={{ color: "#717171", textDecoration: "none",'&:hover': {
+                  cursor: "pointer",
+                }, }}>
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
           </Box>
-        </Grid>
+        </Box>
       </Grid>
-    </ThemeProvider>
+      {/* </Grid> */}
+      {/* </Provider> */}
     </div>
   );
 }
