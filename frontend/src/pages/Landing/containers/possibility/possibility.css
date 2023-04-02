@@ -75,6 +75,7 @@
 @media screen and (max-width : 550px){
     .gpt3__possibility {
         padding : 2rem 2rem !important;
+        margin: 3rem 1rem !important;
     }
     .gpt3__possibility-info {
         align-items: center;

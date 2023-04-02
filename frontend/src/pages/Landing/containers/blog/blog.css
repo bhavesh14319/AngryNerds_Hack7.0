@@ -43,9 +43,10 @@
     }
 }
 
-@media screen and (max-width : 630px) {
+@media screen and (max-width : 630px) { 
     .gpt3__blog {
-        margin : 5rem 2rem !important;
+        /* margin : 5rem 2rem !important; */
+        margin : 3rem 0 !important;
     }
     .gpt3__blog-article__container-2 {
         grid-template-columns: 1fr;

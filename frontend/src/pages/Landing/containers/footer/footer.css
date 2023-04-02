@@ -86,6 +86,9 @@
         flex-direction : column;
         align-items : center;
     }
+    .gpt3__footer-title p{
+        font-size : 50px;
+    }
     .gpt3__footer-early {
         margin-bottom : 6rem;
     }
