@@ -6,8 +6,8 @@ const { sendSuccess, sendError } = require('../utils/apiResponse');
 const path = require('path');
 const { uploadImage } = require('../utils/uploadImage');
 
-const addProduct =async (req,res)=>{
-    const {productName,category,price,onRent,owner_id}=req.body;
+const addProduct = async (req, res) => {
+    const { productName, category, price, onRent, owner_id } = req.body;
 
 
     // upload images to cloudinary and get links and add it in array
@@ -35,33 +35,33 @@ const addProduct =async (req,res)=>{
         })
         await product.save();
 
-        let customer = await Customer.findOne({_id:owner_id});
+        let customer = await Customer.findOne({ _id: owner_id });
         customer = JSON.parse(JSON.stringify(customer));
 
         let updatedCustomer
-        console.log(typeof(onRent));
-        if(onRent==="true"){
+        console.log(typeof (onRent));
+        if (onRent === "true") {
             customer.rentProducts.push(product._id);
-            updatedCustomer = await Customer.findByIdAndUpdate(owner_id,{
+            updatedCustomer = await Customer.findByIdAndUpdate(owner_id, {
                 rentProducts: customer.rentProducts
-            
-    },{new:true});
-        }else{
+
+            }, { new: true });
+        } else {
             customer.sellProducts.push(product._id);
-            updatedCustomer = await Customer.findByIdAndUpdate(owner_id,{ 
+            updatedCustomer = await Customer.findByIdAndUpdate(owner_id, {
                 sellProducts: customer.sellProducts
-            
-    },{new:true});
-        }   
+
+            }, { new: true });
+        }
 
         // console.log(customer);
 
         // console.log(owner_id)
 
 
-       
 
-        return sendSuccess(res, 200, "Product Added Successfully", {product , updatedCustomer});
+
+        return sendSuccess(res, 200, "Product Added Successfully", { product, updatedCustomer });
     })
 }
 
@@ -103,23 +103,25 @@ const getAllSellOrder = async () => {
 };
 
 
-const createSellerRequest =async (req,res)=>{
-    const {customer_id}=req.body;
-    
-    let admin = await Admin.find();
+const createSellerRequest = async (req, res) => {
+    const { customer_id } = req.body;
 
-    admin[0].sellerRequests=admin[0].sellerRequests.filter((id)=>id!=customer_id);
+    // let admin = await Admin.find();
 
-    admin[0].sellerRequests.push(customer_id);
+    // admin[0].sellerRequests=admin[0].sellerRequests.filter((id)=>id!=customer_id);
+
+    // admin[0].sellerRequests.push(customer_id);
+
+    const data = await Admin.findByIdAndUpdate(
+        { "_id": "6428784af715f316d7d1c6ef" },
+        {
+            $push: { sellerRequests: customer_id }
+        },
+        { new: true, runValidators: true }
+    );
 
 
-
-    let updatedAdmin = await Admin.findByIdAndUpdate(admin[0]._id, {
-        sellerRequests:  admin[0].sellerRequests
-
-    }, { new: true });
-
-    return sendSuccess(res, 200, "Seller Request Submitted", {updatedAdmin});
+    return sendSuccess(res, 200, "Seller Request Submitted", { data });
 
 }
-module.exports = { addProduct, createOrder, getAllBuyOrder, getAllSellOrder ,createSellerRequest};
+module.exports = { addProduct, createOrder, getAllBuyOrder, getAllSellOrder, createSellerRequest };

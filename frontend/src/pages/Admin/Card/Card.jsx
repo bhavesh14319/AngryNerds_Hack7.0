@@ -3,7 +3,10 @@ import './card.css'
 import { Avatar } from '@mui/material'
 
 
-const Card = ({ name, imgSrc }) => {
+const Card = ({ name, imgSrc, value }) => {
+  const verify = () => {
+
+  };
   return (
     <div className="farmeasy__card">
       <div className="farmeasy__card-img">
@@ -13,7 +16,7 @@ const Card = ({ name, imgSrc }) => {
         <p>{name}</p>
       </div>
       <div className="farmeasy__card-name__button">
-        <button>Verify</button>
+        <button onClick={verify}>Verify</button>
       </div>
     </div>
   )

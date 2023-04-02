@@ -31,28 +31,35 @@ const Profile = (props) => {
 
     const { data } = props;
     const [view, setView] = useState(false);
+    const [sellerRequest, setSellerRequest] = useState([]);
 
     const viewchange = (e) => {
         e.preventDefault();
         setView(true);
     }
-    // const getSellerRequests = ()
+    const getSellerRequests = async () => {
+        const data = await axios.get('http://localhost:3000/api/admin/v1/getSellerRequests');
+        setSellerRequest(data?.data?.data?.users);
+    }
     useEffect(() => {
-        // getSellerRequests();
+        getSellerRequests();
     }, []);
     return (
-        <div className="farmeasy__profile">
-            <div className="farmeasy__profile-unverified">
-                <div className='farmeasy__profile-box'></div>
-                <p>Unverified Users</p>
-            </div>
-            <div className="farmeasy__profiles">
+        <>
+            <div className="farmeasy__profile">
+                <div className="farmeasy__profile-unverified">
+                    <div className='farmeasy__profile-box'></div>
+                    <p>Unverified Users</p>
+                </div>
+                <div className="farmeasy__profiles">
 
-                {
-                    data?.map((data) => {
-                        return <Card name={data.first_name} imgSrc={data.image} />
-                    })
-                }
+                    {
+                        data?.map((data) => {
+                            return <Card onClick={(data) => {
+                                console.log(data);
+                            }} key={data} name={data.first_name} imgSrc={data.image} />
+                        })
+                    }
 
                 </div>
                 <div className="farmeasy__profile-viewall">
@@ -67,11 +74,11 @@ const Profile = (props) => {
                     <p>Seller Request</p>
                 </div>
                 <div className="farmeasy__profiles">
-
-                    <Card name={new_list[0].name} imgSrc={new_list[0].imgSrc} />
-                    <Card name={new_list[1].name} imgSrc={new_list[1].imgSrc} />
-                    <Card name={new_list[2].name} imgSrc={new_list[2].imgSrc} />
-
+                    {
+                        sellerRequest.map((data) => {
+                            return <Card value={data} name={data?.first_name} imgSrc={data?.image} />
+                        })
+                    }
                 </div>
                 <div className="farmeasy__profile-viewall">
                     <Link to={'/full'} >
