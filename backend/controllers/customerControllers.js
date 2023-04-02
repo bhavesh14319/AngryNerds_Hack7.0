@@ -105,14 +105,12 @@ const getAllSellOrder = async () => {
 
 const createSellerRequest =async (req,res)=>{
     const {customer_id}=req.body;
-
-    const {user}=await Customer.findById({_id:customer_id});
     
     let admin = await Admin.find();
 
-    admin[0].sellerRequests=admin[0].sellerRequests.filter((user)=>user._id!=customer_id);
+    admin[0].sellerRequests=admin[0].sellerRequests.filter((id)=>id!=customer_id);
 
-    admin[0].sellerRequests.push(user);
+    admin[0].sellerRequests.push(customer_id);
 
 
 
