@@ -13,20 +13,21 @@ const adminSchema = new mongoose.Schema({
     phone: {
         type: String,
     },
-    email:{
-        type:String,
+    email: {
+        type: String,
     },
-    unverifiedUsers:{
-        type:[mongoose.Schema.Types.ObjectId]
+    unverifiedUsers: {
+        type: [mongoose.Schema.Types.ObjectId]
     },
-    sellerRequests:{
-        type:[{}],
+    sellerRequests: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Customer'
     },
 
-    ordersQueue:{
-        type:[mongoose.Schema.Types.ObjectId]
+    ordersQueue: {
+        type: [mongoose.Schema.Types.ObjectId]
     }
 });
 
-const Admin = mongoose.model('Admin',adminSchema );
+const Admin = mongoose.model('Admin', adminSchema);
 module.exports = Admin;
